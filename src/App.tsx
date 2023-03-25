@@ -1,16 +1,15 @@
+import { Routes, Route } from "react-router-dom";
+import Start from "./start/Start";
+import Register from "./register/Register";
+import Login from "./login/Login";
+import "./App.css";
 function App() {
-  const fetchingdata = async () => {
-    // const response = await fetch("https://localhost:7229/WeatherForecast");
-    const response = await fetch("https://quickbitebe.azurewebsites.net/weatherforecast"
-    );
-    const result = await response.json();
-    console.log(result);
-  };
-  fetchingdata();
   return (
-    <>
-      <h1>Hello World!</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<Start />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/Register" element={<Register />} />
+    </Routes>
   );
 }
 export default App;
