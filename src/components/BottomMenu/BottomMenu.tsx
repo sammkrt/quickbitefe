@@ -1,8 +1,10 @@
 import React from 'react'
 
 const BottomMenu = () => {
-  return (
-    <div>BottomMenu</div>
+  return (<>
+    <div></div>
+    <div>Here is the navBar</div>
+    </>
   )
 }
 

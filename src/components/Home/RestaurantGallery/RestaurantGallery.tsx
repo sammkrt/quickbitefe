@@ -1,8 +1,11 @@
 import React from 'react'
+import RestaurantCard from '../RestaurantCard/RestaurantCard'
 
 const RestaurantGallery = () => {
   return (
-    <div>RestaurantGallery</div>
+    <div>RestaurantGallery
+        <RestaurantCard/>
+    </div>
   )
 }
 
