@@ -1,15 +1,12 @@
+import { Routes, Route } from "react-router-dom";
+import Login from "./Login";
+import "./App.css";
 function App() {
-  const fetchingdata = async () => {
-    // const response = await fetch("https://localhost:7229/WeatherForecast");
-    const response = await fetch("https://quickbitebe.azurewebsites.net/weatherforecast"
-    );
-    const result = await response.json();
-    console.log(result);
-  };
-  fetchingdata();
   return (
     <>
-      <h1>Hello World!</h1>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
     </>
   );
 }
