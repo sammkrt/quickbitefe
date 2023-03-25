@@ -9,10 +9,11 @@ import Cart from "./pages/Cart/Cart";
 import MenuItem from "./pages/MenuItem/MenuItem";
 import Payment from "./pages/Payment/Payment";
 import MyOrder from "./pages/MyOrder/MyOrder";
+import StartPage from "./pages/StartPage/StartPage";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Start />} />
+      <Route path="/" element={<StartPage />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/Home" element={<Home />} />
