@@ -21,7 +21,7 @@ function Register() {
             type="text"
           />
           <br />
-          <Link to="/home">
+          <Link to="/login">
           <button className="register-button" type="submit">
             Register
           </button>

@@ -11,7 +11,7 @@ function Start() {
           <button className="start-button">Login</button>
         </Link>
         <p className="start-p">Don't have an account?</p>
-        <Link to="/login">
+        <Link to="/register">
           <button className="start-button">Register</button>
         </Link>
       </section>
