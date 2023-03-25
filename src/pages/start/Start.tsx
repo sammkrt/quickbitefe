@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Start.css";
 function Start() {
   return (
@@ -6,9 +7,13 @@ function Start() {
       <img className="start-img" src="./assets/logo.png" />
       <section className="start-section">
         <h2 className="start-h2">Join us</h2>
-        <button className="start-button">Login</button>
-        <p className="start-p">Do not have an account ?</p>
-        <button className="start-button">Register</button>
+        <Link to="/login">
+          <button className="start-button">Login</button>
+        </Link>
+        <p className="start-p">Don't have an account?</p>
+        <Link to="/login">
+          <button className="start-button">Register</button>
+        </Link>
       </section>
     </main>
   );

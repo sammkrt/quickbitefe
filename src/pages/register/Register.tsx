@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Register.css";
 function Register() {
   return (
@@ -20,9 +21,11 @@ function Register() {
             type="text"
           />
           <br />
+          <Link to="/home">
           <button className="register-button" type="submit">
             Register
           </button>
+          </Link>
         </form>
       </section>
     </main>
