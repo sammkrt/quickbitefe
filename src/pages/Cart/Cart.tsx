@@ -1,8 +1,11 @@
 import React from 'react'
+import BottomMenu from '../../components/BottomMenu/BottomMenu'
 
 const Cart = () => {
   return (
-    <div>Cart</div>
+    <div>Cart
+         <BottomMenu/>
+    </div>
   )
 }
 

@@ -1,8 +1,11 @@
 import React from 'react'
+import BottomMenu from '../../components/BottomMenu/BottomMenu'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>Profile
+         <BottomMenu/>
+    </div>
   )
 }
 
