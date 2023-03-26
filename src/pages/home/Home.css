@@ -7,6 +7,9 @@
   background: #444141;
   border-radius: 25px;
   margin: 10px;
-  max-height: calc(100vh - 195px);
-  min-height: calc(100vh - 195px);
+  max-height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
+}
+.home-h1 {
+  font-size: 35px;
 }

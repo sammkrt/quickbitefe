@@ -4,7 +4,7 @@ function Login() {
   return (
     <main className="login-main">
       <h1 className="login-h1">Quickbite</h1>
-      <img className="login-img" src="./assets/logo.png" />
+      <img className="login-img" src="./assets/logo.png" alt="logo" />
       <section className="login-section">
         <h2 className="login-h2">Login</h2>
         <form>
@@ -15,9 +15,9 @@ function Login() {
           <input className="login-input" placeholder="Password" type="text" />
           <br />
           <Link to="/home">
-          <button className="login-button" type="submit">
-            Login
-          </button>
+            <button className="login-button" type="submit">
+              Login
+            </button>
           </Link>
         </form>
       </section>
