@@ -1,18 +1,36 @@
-import React from 'react'
-import BottomMenu from '../../components/BottomMenu/BottomMenu'
-import Filter from '../../components/Home/Filter/Filter'
-import RestaurantGallery from '../../components/Home/RestaurantGallery/RestaurantGallery'
-// import '../../../public/assets/logoHeader.png'
-
-const Home = () => {
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import "./Home.css";
+import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGallery";
+function Home() {
   return (
-    <div>
-        <img className="header-img" src="./assets/logoHeader.png" />
-        <Filter/>
-       <RestaurantGallery/>
-        <BottomMenu/>
-    </div>
-  )
+    <main className="home-main">
+      <Header />
+      <SearchBar />
+      <h1 className="home-h1">Categories</h1>
+      <div className="container">
+      <section className="home-section">
+        <img className="home-img" src="./assets/pizza.png" alt="pizza" />
+        <p>Pizza</p>
+        </section>
+      <section className="home-section">
+        <img className="home-img" src="./assets/burger.png" alt="burger" />
+        <p>Buruger</p>
+        </section>
+      <section className="home-section">
+        <img className="home-img" src="./assets/chinese.png" alt="chinese" />
+        <p>Chinese</p>
+        </section>
+      <section className="home-section">
+        <img className="home-img" src="./assets/pasta.png" alt="pasta" />
+        <p>Pasta</p>
+        </section>
+      </div>
+      <h1 className="home-h1">Restaurants</h1>
+      <RestaurantGallery />
+      <Footer />
+    </main>
+  );
 }
-
-export default Home
+export default Home;

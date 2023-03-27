@@ -1,0 +1,22 @@
+.delete-button{
+    background: #0c0d01;
+    border: 0;
+    font-size: 25px;
+    border-radius: 15px;
+    margin: auto;
+    color: #444141;
+    padding: 5px 10px;
+}
+
+.cart-figure{
+    background: #444141;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cart_main {
+   margin: 10px;
+}

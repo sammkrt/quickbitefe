@@ -1,9 +1,12 @@
-import React from 'react'
+import Footer from "../../components/Footer/Footer";
 
-const MyOrder = () => {
-  return (
-    <div>MyOrder</div>
-  )
-}
-
-export default MyOrder
+function MyOrder() {
+    return (
+      <main>
+        MyOrder
+        <Footer />
+      </main>
+    );
+  }
+  export default MyOrder;
+  

@@ -1,0 +1,18 @@
+.profile_info {
+    background: #444141;
+    border-radius: 25px;
+    margin: 30px 30px 30px 30px;
+    
+}
+
+
+
+.profile_info_text {
+    margin: 30px;
+}
+
+.profile-img {
+    width: 50%;
+    border-radius: 60%;
+    
+}
