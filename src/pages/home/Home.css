@@ -6,10 +6,18 @@
 .home-section {
   background: #444141;
   border-radius: 25px;
-  margin: 10px;
-  max-height: calc(100vh - 200px);
-  min-height: calc(100vh - 200px);
+  margin: 20px;
+  height: 120px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 .home-h1 {
   font-size: 35px;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.home-img {
+  width: 80px;
 }

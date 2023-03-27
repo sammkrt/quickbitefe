@@ -6,3 +6,12 @@ body {
   padding: 0;
   text-align: center;
 }
+button:hover {
+  cursor: pointer;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}

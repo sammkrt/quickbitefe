@@ -3,17 +3,20 @@
   border-radius: 50px;
   display: flex;
   flex-direction: row;
-  height: 0;
-  margin: 30px 10px 10px 10px;
-  padding-bottom: 45px;
+  margin: 30px 10px 0 10px;
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 20px);
 }
 .footer-img {
   align-self: center;
   background: #f8ece0;
   border-radius: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
   padding: 5px;
   width: 40px;
+}
+.footer-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5px;
 }
