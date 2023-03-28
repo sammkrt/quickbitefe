@@ -1,12 +1,12 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import "./HomePage.css";
 import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGallery";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
 function HomePage() {
   return (
     <main className="home-main">
-      <Header />
+      <HeaderComponent />
       <SearchBar />
       <h1 className="home-h1">Categories</h1>
       <div className="container">
@@ -29,7 +29,7 @@ function HomePage() {
       </div>
       <h1 className="home-h1">Restaurants</h1>
       <RestaurantGallery />
-      <Footer />
+      <FooterComponent />
     </main>
   );
 }

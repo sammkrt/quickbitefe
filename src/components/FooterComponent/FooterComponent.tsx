@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "./Footer.css";
-function Footer() {
+import "./FooterComponent.css";
+function FooterComponent() {
   return (
     <main className="footer-main">
 
@@ -24,4 +24,4 @@ function Footer() {
     </main>
   );
 }
-export default Footer;
+export default FooterComponent;

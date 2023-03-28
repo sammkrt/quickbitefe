@@ -1,11 +1,11 @@
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import "./Profile.css"
 
 function Profile() {
   return (
     <main className="profile-main">
-      <Header />
+      <HeaderComponent />
       <img className="profile-img" src="./assets/user.png" alt="user" />
       <section className="profile-section">
       <p className="profile-p">Name : user.name</p>
@@ -16,7 +16,7 @@ function Profile() {
       <p className="profile-p">Postal Code : </p>
       <p className="profile-p">House / Building Number : </p>
       </section>
-      <Footer />
+      <FooterComponent />
     </main>
   );
 }

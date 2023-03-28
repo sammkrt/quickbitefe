@@ -1,6 +1,6 @@
 import ItemGallery from "../../components/ItemGallery/ItemGallery";
-import Footer from "../../components/Footer/Footer";
 import "./Restaurants.css"
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
 function Restaurant() {
     return (
       <main>
@@ -11,7 +11,7 @@ function Restaurant() {
         </div>
         <ItemGallery />
         <section className="restaurant-section">Delivery Cost: <span className="restaurant-price">8.99</span></section>
-        <Footer />
+        <FooterComponent />
       </main>
     );
   }

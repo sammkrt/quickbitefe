@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "./Header.css";
-function Header() {
+import "./HeaderComponent.css";
+function HeaderComponent() {
   return (
     <main className="header-main">
       <img className="header-img" src="./assets/logo.png" alt="logo" />
@@ -11,4 +11,4 @@ function Header() {
     </main>
   );
 }
-export default Header;
+export default HeaderComponent;
