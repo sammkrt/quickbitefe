@@ -45,11 +45,11 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <Link to="/home">
+          {/* <Link to="/home"> */}
           <button className="login-button" type="submit">
             Login
           </button>
-          </Link>
+          {/* </Link> */}
         </form>
       </section>
     </main>

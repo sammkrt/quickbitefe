@@ -17,9 +17,9 @@ function HeaderComponent() {
     <main className="header-main">
       <img className="header-img" src="./assets/logo.png" alt="logo" />
       <h1 className="header-h1">uickbite</h1>
-      <Link to="/">
+      {/* <Link to="/"> */}
         <button className="header-button" onClick={handleLogout}>Logout</button>
-      </Link>
+      {/* </Link> */}
     </main>
   );
 }
