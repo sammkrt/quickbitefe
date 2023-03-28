@@ -82,11 +82,11 @@ function RegisterPage() {
             value={phonenumber} onChange={(e) => setPhonenumber(e.target.value)}
           />
           <br />
-          <Link to="/login">
+          {/* <Link to="/login"> */}
             <button className="register-button" type="submit">
               Register
             </button>
-          </Link>
+          {/* </Link> */}
         </form>
         {successMessage && <div>{successMessage}</div>}
       </section>
