@@ -1,31 +1,24 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import ItemCard from "../../components/ItemCard/ItemCard";
+import Counter from "../../components/Counter/Counter";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import "./MenuItem.css";
+
 function MenuItem() {
-  const [counter, setCounter] = useState(1);
-  const increase = () => {
-    setCounter((count) => count + 1);
-  };
-  const decrease = () => {
-    if (counter > 1) {
-      setCounter((count) => count - 1);
-    }
-  };
   return (
     <main>
+    <main>
+      <Header/>
       <ItemCard />
       <div className="itemcard-container">
-        <div className="button-container">
-          <button className="control-button" onClick={decrease}>
-            -
-          </button>
-          <span className="counter-output">{counter}</span>
-          <button className="control-button" onClick={increase}>
-            +
-          </button>
-        </div>
-          <button className="addtocart-button">Add to Cart</button>
+        <Counter/>
+        <Link to="/cart">
+        <button className="addtocart-button">Add to Cart</button>
+        </Link>  
       </div>
+      <Footer/>
+    </main>
     </main>
   );
 }

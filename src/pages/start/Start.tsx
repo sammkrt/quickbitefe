@@ -3,7 +3,7 @@ import "./Start.css";
 function Start() {
   return (
     <main className="start-main">
-      <h1 className="start-h1">Welocome to Quickbite</h1>
+      <h1 className="start-h1">Welcome to Quickbite</h1>
       <img className="start-img" src="./assets/logo.png" alt="logo" />
       <section className="start-section">
         <h2 className="start-h2">Join us</h2>
