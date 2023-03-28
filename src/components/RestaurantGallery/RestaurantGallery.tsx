@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import "./RestaurantGallery.css";
+import {Restaurant} from "../../types/Types";
+
+
+
 function RestaurantGallery() {
   return (
     <main>

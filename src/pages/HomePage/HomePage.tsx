@@ -4,21 +4,22 @@ import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGall
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import { useEffect, useState } from "react";
+import {Restaurant} from "../../types/Types";
+
+
 function HomePage() {
 
-
-  const [restaurant, setRestaurant] = useState('')
-  const fetchUser = async()=> {
-  const result = await fetch("http://localhost:5242/Auth/user");
+  const [restaurant, setRestaurant] = useState<Restaurant[]>([])
+  const fetchRestaurant = async()=> {
+  const result = await fetch("http://localhost:5242/api/Restaurants");
   const data = await result.json();
   setRestaurant(data);
   console.log(data)
   };
   useEffect(()=> {
-    fetchUser();
+    fetchRestaurant();
   }, []);
-
-
+  
 
 
 
