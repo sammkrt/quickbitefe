@@ -1,0 +1,24 @@
+.restaurant-img {
+    width: 100%;
+}
+.restaurant-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.restaurant-h2 {
+margin-right: 15px;
+}
+.restaurant-h3 {
+    margin-top: 50px;
+    margin-left: 40px;
+}
+.restaurant-section {
+    background: #f8ece0;
+    border-radius: 25px;
+    color: #444141;
+    margin-left: 45px;
+    margin-right: 45px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
