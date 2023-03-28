@@ -3,7 +3,25 @@ import "./HomePage.css";
 import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGallery";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
+import { useEffect, useState } from "react";
 function HomePage() {
+
+
+  const [restaurant, setRestaurant] = useState('')
+  const fetchUser = async()=> {
+  const result = await fetch("http://localhost:5242/Auth/user");
+  const data = await result.json();
+  setRestaurant(data);
+  console.log(data)
+  };
+  useEffect(()=> {
+    fetchUser();
+  }, []);
+
+
+
+
+
   return (
     <main className="home-main">
       <HeaderComponent />

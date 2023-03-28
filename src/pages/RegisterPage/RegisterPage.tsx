@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./RegisterPage.css";
 
+
 function RegisterPage() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -9,7 +10,7 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  // const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,10 +22,11 @@ function RegisterPage() {
       body: JSON.stringify({ firstname, lastname, email, password, address, phonenumber })
     });
     if (response.ok) {
-      setSuccessMessage('Registration successful');
+      // setSuccessMessage('Registration successful');
     } else {
       console.error('Failed to register');
     }
+ 
   };
 
   return (
@@ -82,13 +84,13 @@ function RegisterPage() {
             value={phonenumber} onChange={(e) => setPhonenumber(e.target.value)}
           />
           <br />
-          {/* <Link to="/login"> */}
+          {/* <Link to="/home"> */}
             <button className="register-button" type="submit">
               Register
             </button>
           {/* </Link> */}
         </form>
-        {successMessage && <div>{successMessage}</div>}
+        {/* {successMessage && <div>{successMessage}</div>} */}
       </section>
     </main>
   );
