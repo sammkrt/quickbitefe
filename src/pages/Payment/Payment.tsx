@@ -1,10 +1,10 @@
-import Footer from "../../components/Footer/Footer";
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
 
 function Payment() {
     return (
       <main>
         Payment
-        <Footer />
+        <FooterComponent />
       </main>
     );
   }

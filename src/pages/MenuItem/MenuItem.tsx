@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import Counter from "../../components/Counter/Counter";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import "./MenuItem.css";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
 
 function MenuItem() {
   return (
     <main>
     <main>
-      <Header/>
+      <HeaderComponent />
       <ItemCard />
       <div className="itemcard-container">
         <Counter/>
@@ -17,7 +17,7 @@ function MenuItem() {
         <button className="addtocart-button">Add to Cart</button>
         </Link>  
       </div>
-      <Footer/>
+      <FooterComponent />
     </main>
     </main>
   );

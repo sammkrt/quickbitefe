@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import Counter from "../../components/Counter/Counter";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import "./Cart.css";
 
 function Cart() {
   return (
     <main>
-      <Header />
+      <HeaderComponent />
       <section className="cart-section">
         <h1>My Cart</h1>
         <ItemCard />
@@ -29,7 +29,7 @@ function Cart() {
           <button className="cart-button">Place my order</button>
         </Link>
       </section>
-      <Footer />
+      <FooterComponent />
     </main>
   );
 }
