@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import {Restaurant} from "../../types/Types";
 
 
+
+
+
 function HomePage() {
 
   const [restaurant, setRestaurant] = useState<Restaurant[]>([])
@@ -47,7 +50,7 @@ function HomePage() {
         </section>
       </div>
       <h1 className="home-h1">Restaurants</h1>
-      <RestaurantGallery />
+      <RestaurantGallery restaurant={restaurant}/>
       <FooterComponent />
     </main>
   );
