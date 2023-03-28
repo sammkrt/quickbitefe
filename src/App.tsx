@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import Payment from "./components/Payment";
 import Register from "./components/Register";
 
 function App() {
@@ -13,10 +14,13 @@ function App() {
   //   console.log(result);
   // };
   // fetchingdata();
+
+  
   return <>
   <Register />
   <Login />
   <Logout />
+  <Payment />
   </>;
 }
 export default App;
