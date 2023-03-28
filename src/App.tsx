@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Start from "./pages/Start/Start";
+import StartPage from "./pages/StartPage/StartPage";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
@@ -13,7 +13,7 @@ import "./App.css";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Start />} />
+      <Route path="/" element={<StartPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />

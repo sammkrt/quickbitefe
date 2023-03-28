@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "./Start.css";
-function Start() {
+import "./StartPage.css";
+function StartPage() {
   return (
     <main className="start-main">
       <h1 className="start-h1">Welcome to Quickbite</h1>
@@ -18,4 +18,4 @@ function Start() {
     </main>
   );
 }
-export default Start;
+export default StartPage;
