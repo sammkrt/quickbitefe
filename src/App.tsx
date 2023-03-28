@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import StartPage from "./pages/StartPage/StartPage";
-import Register from "./pages/Register/Register";
-import Login from "./pages/Login/Login";
-import Home from "./pages/Home/Home";
+import RegisterPage from "./pages/Register/RegisterPage";
+import LoginPage from "./pages/Login/LoginPage";
+import HomePage from "./pages/Home/HomePage";
 import Profile from "./pages/Profile /Profile";
 import Cart from "./pages/Cart/Cart";
 import MenuItem from "./pages/MenuItem/MenuItem";
@@ -14,9 +14,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<StartPage />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/menuItem" element={<MenuItem />} />

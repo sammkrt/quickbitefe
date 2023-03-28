@@ -1,9 +1,9 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import "./Home.css";
+import "./HomePage.css";
 import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGallery";
-function Home() {
+function HomePage() {
   return (
     <main className="home-main">
       <Header />
@@ -33,4 +33,4 @@ function Home() {
     </main>
   );
 }
-export default Home;
+export default HomePage;

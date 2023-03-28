@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "./Register.css";
+import "./RegisterPage.css";
 
-function Register() {
+function RegisterPage() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
@@ -93,4 +93,4 @@ function Register() {
     </main>
   );
 }
-export default Register;
+export default RegisterPage;

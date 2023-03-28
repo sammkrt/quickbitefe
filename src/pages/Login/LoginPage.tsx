@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "./Login.css";
-function Login() {
+import "./LoginPage.css";
+function LoginPage() {
   return (
     <main className="login-main">
       <h1 className="login-h1">Quickbite</h1>
@@ -24,4 +24,4 @@ function Login() {
     </main>
   );
 }
-export default Login;
+export default LoginPage;
