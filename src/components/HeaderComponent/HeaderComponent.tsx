@@ -7,6 +7,7 @@ function HeaderComponent() {
     });
     if (response.ok) {
       console.log('Logged out successfully');
+      localStorage.removeItem('jwt');
     } else {
       console.error('Failed to logout');
     }

@@ -4,6 +4,7 @@ import "./LoginPage.css";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await fetch("http://localhost:5242/Auth/login", {
@@ -15,9 +16,10 @@ function LoginPage() {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      localStorage.setItem("jwt", data.jwt); 
+      window.location.href = "/home"; 
     } else {
-      console.error("Failed to login");
+      setError("Failed to login");
     }
   };
   return (
@@ -40,17 +42,19 @@ function LoginPage() {
           <input
             className="login-input"
             placeholder="Password"
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          {/* <Link to="/home"> */}
+          {error && <p className="login-error">{error}</p>}
           <button className="login-button" type="submit">
             Login
           </button>
-          {/* </Link> */}
         </form>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
       </section>
     </main>
   );
