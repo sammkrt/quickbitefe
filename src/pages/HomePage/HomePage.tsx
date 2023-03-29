@@ -6,16 +6,7 @@ import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import "./HomePage.css";
 function HomePage() {
-  // const [restaurant, setRestaurant] = useState<RestaurantModel[]>([]);
-  // const fetchRestaurant = async () => {
-  //   const result = await fetch("http://localhost:5242/api/Restaurants");
-  //   const data = await result.json();
-  //   setRestaurant(data);
-  //   console.log(data);
-  // };
-  // useEffect(() => {
-  //   fetchRestaurant();
-  // }, []);
+ const [inputValue, setInputValue] = useState("");
   const [restaurant, setRestaurant] = useState<RestaurantModel[]>([]);
   const fetchRestaurant = async () => {
     const result = await fetch("http://localhost:5242/api/Restaurants");
@@ -27,6 +18,7 @@ function HomePage() {
     fetchRestaurant();
   }, []);
   const filterCard = (value: any) => {
+    setInputValue(value);
     if (value === "") {
       fetchRestaurant();
     } else {
@@ -36,7 +28,7 @@ function HomePage() {
             value
               .toLowerCase()
               .split(" ")
-              .every((word: any) => dish.name.toLowerCase().includes(word))
+              .every((word : any) => dish.name.toLowerCase().includes(word))
           )
         )
       );
