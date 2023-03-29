@@ -27,11 +27,54 @@ function HomePage() {
     fetchRestaurant();
   }, []);
   const filterCard = (value: any) => {
-    if (value == "") fetchRestaurant();
+    if (value === "") {
+      fetchRestaurant();
+    } else {
+      setRestaurant((previousState) =>
+        previousState.filter((restaurant) =>
+          restaurant.dishes.some((dish) =>
+            value
+              .toLowerCase()
+              .split(" ")
+              .every((word: any) => dish.name.toLowerCase().includes(word))
+          )
+        )
+      );
+    }
+  };
+  const filterPizza = () => {
     setRestaurant((previousState) =>
       previousState.filter((restaurant) =>
         restaurant.dishes.some((dish) =>
-          dish.name.toLowerCase().includes(value.toLowerCase())
+          dish.name.toLowerCase().includes("pizza")
+        )
+      )
+    );
+    // document.querySelector(".home-section").style.background = "#ff0000";
+  };
+  const filterBurger = () => {
+    setRestaurant((previousState) =>
+      previousState.filter((restaurant) =>
+        restaurant.dishes.some((dish) =>
+          dish.name.toLowerCase().includes("burger")
+        )
+      )
+    );
+  };
+  const filterBitterballen = () => {
+    setRestaurant((previousState) =>
+      previousState.filter((restaurant) =>
+        restaurant.dishes.some((dish) =>
+          dish.name.toLowerCase().includes("bitterballen")
+        )
+      )
+    );
+  };
+  const filterPasta = () => {
+    setRestaurant((previousState) =>
+      previousState.filter((restaurant) =>
+        restaurant.dishes.some((dish) =>
+          dish.name.toLowerCase().includes("pasta")
         )
       )
     );
@@ -52,26 +95,30 @@ function HomePage() {
           {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
         </button>
       </div>
-      {/* <h1 className="home-h1">Categories</h1>
+      <h1 className="home-h1">Categories</h1>
       <div className="container">
-      <section className="home-section">
-        <img className="home-img" src="./assets/pizza.png" alt="pizza" />
-        <p>Pizza</p>
+        <section onClick={filterPizza} className="home-section">
+          <img className="home-img" src="./assets/pizza.png" alt="pizza" />
+          <p>Pizza</p>
         </section>
-      <section className="home-section">
-        <img className="home-img" src="./assets/burger.png" alt="burger" />
-        <p>Buruger</p>
+        <section onClick={filterBurger} className="home-section">
+          <img className="home-img" src="./assets/burger.png" alt="burger" />
+          <p>Burger</p>
         </section>
-      <section className="home-section">
-        <img className="home-img" src="./assets/chinese.png" alt="chinese" />
-        <p>Chinese</p>
+        <section onClick={filterBitterballen} className="home-section">
+          <img
+            className="home-img"
+            src="./assets/chinese.png"
+            alt="Bitterballen"
+          />
+          <p>Bitterballen</p>
         </section>
-      <section className="home-section">
-        <img className="home-img" src="./assets/pasta.png" alt="pasta" />
-        <p>Pasta</p>
+        <section onClick={filterPasta} className="home-section">
+          <img className="home-img" src="./assets/pasta.png" alt="pasta" />
+          <p>Pasta</p>
         </section>
       </div>
-      <h1 className="home-h1">Restaurants</h1> */}
+      <h1 className="home-h1">Restaurants</h1>
       <RestaurantGallery restaurant={restaurant} />
       <FooterComponent />
     </main>
