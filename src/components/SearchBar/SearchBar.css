@@ -1,16 +1,16 @@
 .searchbar-input {
-    background: #444141;
-    border: 0;
-    border-radius: 25px;
-    padding: 10px;
+  background: #444141;
+  border: 0;
+  border-radius: 25px;
+  padding: 10px;
 }
 .searchbar-button {
-    background: #444141;
-    border: 0;
-    border-radius: 25px;
-    margin-left: 5px;
-    padding: 8px;
+  background: #444141;
+  border: 0;
+  border-radius: 25px;
+  margin-left: 5px;
+  padding: 8px;
 }
 .searchbar-img {
-    width: 12px;
+  width: 12px;
 }

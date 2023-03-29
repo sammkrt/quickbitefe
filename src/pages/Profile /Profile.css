@@ -1,8 +1,8 @@
 .profile-img {
-    width: 100px;
-    background: #fa7d09;
-    border-radius: 100px;
-    padding: 20px;
+  width: 100px;
+  background: #fa7d09;
+  border-radius: 100px;
+  padding: 20px;
 }
 .profile-section {
   background: #444141;
@@ -10,5 +10,5 @@
   margin: 30px;
 }
 .profile-p {
-    margin: 30px;
+  margin: 30px;
 }

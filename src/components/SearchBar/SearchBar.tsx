@@ -6,7 +6,6 @@ function SearchBar() {
       <button className="searchbar-button">
         <img className="searchbar-img" src="./assets/search.png" alt="search" />
       </button>
-
     </main>
   );
 }

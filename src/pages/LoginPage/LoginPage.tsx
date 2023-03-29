@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./LoginPage.css";
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -45,11 +44,9 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          {/* <Link to="/home"> */}
           <button className="login-button" type="submit">
             Login
           </button>
-          {/* </Link> */}
         </form>
       </section>
     </main>

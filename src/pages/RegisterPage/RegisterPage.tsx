@@ -1,34 +1,33 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./RegisterPage.css";
-
-
 function RegisterPage() {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [address, setAddress] = useState('');
-  const [phonenumber, setPhonenumber] = useState('');
-  // const [successMessage, setSuccessMessage] = useState('');
-
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await fetch('http://localhost:5242/Auth/register', {
-      method: 'POST',
+    const response = await fetch("http://localhost:5242/Auth/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ firstname, lastname, email, password, address, phonenumber })
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        email,
+        password,
+        address,
+        phonenumber,
+      }),
     });
     if (response.ok) {
-      // setSuccessMessage('Registration successful');
     } else {
-      console.error('Failed to register');
+      console.error("Failed to register");
     }
- 
   };
-
   return (
     <main className="register-main">
       <h1 className="register-h1">Quickbite</h1>
@@ -41,7 +40,8 @@ function RegisterPage() {
             className="register-input"
             placeholder="First name"
             type="text"
-            value={firstname} onChange={(e) => setFirstname(e.target.value)}
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
           />
           <br />
           <p className="register-p">Last name</p>
@@ -49,7 +49,8 @@ function RegisterPage() {
             className="register-input"
             placeholder="Last name"
             type="text"
-            value={lastname} onChange={(e) => setLastname(e.target.value)}
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
           />
           <br />
           <p className="register-p">Email</p>
@@ -57,7 +58,8 @@ function RegisterPage() {
             className="register-input"
             placeholder="Email"
             type="text"
-            value={email} onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <br />
           <p className="register-p">Password</p>
@@ -65,7 +67,8 @@ function RegisterPage() {
             className="register-input"
             placeholder="Password"
             type="text"
-            value={password} onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <p className="register-p">Address</p>
@@ -73,7 +76,8 @@ function RegisterPage() {
             className="register-input"
             placeholder="Address"
             type="text"
-            value={address} onChange={(e) => setAddress(e.target.value)}
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
           />
           <br />
           <p className="register-p">Phone number</p>
@@ -81,16 +85,14 @@ function RegisterPage() {
             className="register-input"
             placeholder="Phone number"
             type="text"
-            value={phonenumber} onChange={(e) => setPhonenumber(e.target.value)}
+            value={phonenumber}
+            onChange={(e) => setPhonenumber(e.target.value)}
           />
           <br />
-          {/* <Link to="/home"> */}
-            <button className="register-button" type="submit">
-              Register
-            </button>
-          {/* </Link> */}
+          <button className="register-button" type="submit">
+            Register
+          </button>
         </form>
-        {/* {successMessage && <div>{successMessage}</div>} */}
       </section>
     </main>
   );

@@ -1,14 +1,10 @@
+import { useEffect, useState } from "react";
+import {RestaurantModel} from "../../types/Types";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import "./HomePage.css";
 import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGallery";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
-import { useEffect, useState } from "react";
-import {RestaurantModel} from "../../types/Types";
-
-
-
-
+import "./HomePage.css";
 
 function HomePage() {
 

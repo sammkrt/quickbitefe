@@ -1,18 +1,18 @@
 .button-container {
-    background: #f8ece0;
-    width: 150px;
-    border-radius: 15px;
-    margin: auto;
-    color: #444141;
+  background: #f8ece0;
+  width: 150px;
+  border-radius: 15px;
+  margin: auto;
+  color: #444141;
 }
 .counter-output {
-    font-size: 30px;
-    color: #444141;
+  font-size: 30px;
+  color: #444141;
 }
 .control-button {
-    background: #f8ece0;
-    border: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 30px;
+  background: #f8ece0;
+  border: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 30px;
 }
