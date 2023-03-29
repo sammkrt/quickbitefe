@@ -36,8 +36,9 @@
   margin-left: 5px;
   padding: 8px;
   color: #f8ece0;
-  width: 20px;
+  width: 50px;
 }
 .home-search-container{
   display: flex;
+  justify-content: center;
 }

@@ -40,16 +40,18 @@ function HomePage() {
     <main className="home-main">
       <HeaderComponent />
       {/* <SearchBar /> */}
-      <input
-        className="home-input"
-        type="text"
-        placeholder="Search"
-        onChange={(e: any) => filterCard(e.target.value)}
-      />
-      <button className="home-button">
-        Search
-        {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
-      </button>
+      <div className="home-search-container">
+        <input
+          className="home-input"
+          type="text"
+          placeholder="Search"
+          onChange={(e: any) => filterCard(e.target.value)}
+        />
+        <button className="home-button">
+          Search
+          {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
+        </button>
+      </div>
       {/* <h1 className="home-h1">Categories</h1>
       <div className="container">
       <section className="home-section">
