@@ -7,7 +7,10 @@ function HeaderComponent() {
     });
     if (response.ok) {
       console.log('Logged out successfully');
+      const data = await response.json();
+      console.log(data); 
       localStorage.removeItem('jwt');
+      window.location.href = "/login";
     } else {
       console.error('Failed to logout');
     }
