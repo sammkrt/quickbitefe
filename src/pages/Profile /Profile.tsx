@@ -58,7 +58,7 @@ function Profile() {
     });
 
     if (response.ok) {
-      localStorage.removeItem('jwt');
+      // localStorage.removeItem('jwt');
       navigate('/login');
     } else {
       setError('Failed to logout');

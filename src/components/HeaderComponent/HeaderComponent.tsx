@@ -1,22 +1,24 @@
-import { Link } from "react-router-dom";
 import "./HeaderComponent.css";
+import { useNavigate } from 'react-router-dom';
+
+
+
 function HeaderComponent() {
+  const navigate = useNavigate();
   const handleLogout = async () => {
+    
     const response = await fetch('http://localhost:5242/Auth/logout', {
-      method: 'POST'
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
     });
+
     if (response.ok) {
-      console.log('Logged out successfully');
-      const data = await response.json();
-      console.log(data); 
-      localStorage.removeItem('jwt');
-      window.location.href = "/login";
+      navigate('/login');
     } else {
-      console.error('Failed to logout');
+      console.log("What can I do?")
     }
   };
-
-
   return (
     <main className="header-main">
       <img className="header-img" src="./assets/logo.png" alt="logo" />

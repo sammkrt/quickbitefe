@@ -2,10 +2,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 
-interface LoginResponse {
-  message: string;
-  jwt: string;
-}
 
 interface LoginDto {
   email: string;
@@ -25,15 +21,12 @@ function LoginPage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        
       },
       body: JSON.stringify(data),
       credentials : "include"
     });
 
     if (response.ok) {
-      const responseData: LoginResponse = await response.json();
-      localStorage.setItem("jwt", responseData.jwt);
       navigate("/home");
     } else {
       setError("Failed to login");

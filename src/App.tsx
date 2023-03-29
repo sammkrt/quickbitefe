@@ -10,7 +10,6 @@ import Payment from "./pages/Payment/Payment";
 import Restaurant from "./pages/Restaurants/Restaurants";
 import MyOrder from "./pages/MyOrder/MyOrder";
 import "./App.css";
-import { useEffect, useState } from "react";
 
 // interface User {
 //   firstName : string,

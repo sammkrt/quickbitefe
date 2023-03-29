@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./RegisterPage.css";
 
@@ -10,7 +9,6 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
-  // const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
