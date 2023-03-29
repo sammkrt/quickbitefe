@@ -4,7 +4,7 @@ import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGall
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import { useEffect, useState } from "react";
-import {Restaurant} from "../../types/Types";
+import {RestaurantModel} from "../../types/Types";
 
 
 
@@ -12,7 +12,7 @@ import {Restaurant} from "../../types/Types";
 
 function HomePage() {
 
-  const [restaurant, setRestaurant] = useState<Restaurant[]>([])
+  const [restaurant, setRestaurant] = useState<RestaurantModel[]>([])
   const fetchRestaurant = async()=> {
   const result = await fetch("http://localhost:5242/api/Restaurants");
   const data = await result.json();

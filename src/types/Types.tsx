@@ -7,7 +7,7 @@ export interface Dish {
     restaurantId: number;
   }
   
- export interface Restaurant {
+export interface RestaurantModel {
     id: number;
     name: string;
     description: string;

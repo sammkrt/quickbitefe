@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 import "./RestaurantGallery.css";
-import {Restaurant} from "../../types/Types";
+import {RestaurantModel} from "../../types/Types";
 
 
 interface Props {
-  restaurant: Restaurant[]
+  restaurant: RestaurantModel[]
 }
 
 const RestaurantGallery: React.FC<Props> = ({restaurant}) =>{
   return (
     <main>
-      <Link to="/restaurant">
+      
       
         
         {/* <h2 className="restaurantgallery-h2">{restaurant[0].name}</h2> */}
           {restaurant.map((rest => 
+          <Link to={`/restaurant/${rest.id}`}>
           <figure className="restaurantgallery-figure">
             <li>{rest.name}</li>
             <img className="restaurantgallery-img" src={rest.mainPictureUrl} alt="restaurant" />
@@ -24,8 +25,9 @@ const RestaurantGallery: React.FC<Props> = ({restaurant}) =>{
            <p>{rest.name}</p>
         </div>
             </figure>
+            </Link>
             ))}
-      </Link>
+     
     </main>
   );
 }

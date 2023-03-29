@@ -47,7 +47,7 @@ useEffect(()=> {
       <Route path="/cart" element={<Cart />} />
       <Route path="/menuItem" element={<MenuItem />} />
       <Route path="/payment" element={<Payment />} />
-      <Route path="/restaurant" element={<Restaurant />} />
+      <Route path="/restaurant/:id" element={<Restaurant />} />
       <Route path="/myOrder" element={<MyOrder />} />
     </Routes>
   );
