@@ -1,24 +1,25 @@
 .restaurant-img {
-    width: 100%;
-}
-.restaurant-container {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+  width: 200px;
+  margin-bottom: 15px;
 }
 .restaurant-h2 {
-margin-right: 15px;
+  margin-right: 15px;
 }
 .restaurant-h3 {
-    margin-top: 50px;
-    margin-left: 40px;
+  margin-top: 50px;
+  margin-left: 40px;
 }
 .restaurant-section {
-    background: #f8ece0;
-    border-radius: 25px;
-    color: #444141;
-    margin-left: 45px;
-    margin-right: 45px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  color: #f8ece0;
+  border-radius: 25px;
+  background: #444141;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.restaurant-p {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

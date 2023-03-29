@@ -1,19 +1,31 @@
 import { Link } from "react-router-dom";
+import { RestaurantModel } from "../../types/Types";
 import "./RestaurantGallery.css";
-function RestaurantGallery() {
+interface Props {
+  restaurant: RestaurantModel[];
+}
+const RestaurantGallery: React.FC<Props> = ({ restaurant }) => {
   return (
     <main>
-      <Link to="/restaurant">
-      <figure className="restaurantgallery-figure">
-        <img className="restaurantgallery-img" src="./assets/restaurant.png" alt="restaurant" />
-        <div className="restaurantgallery-container">
-        <h2 className="restaurantgallery-h2">Restaurant name</h2>
-        <p>Type of food</p>
-        <p>Delivery price</p>
-        </div>
-      </figure>
-      </Link>
+      {restaurant.map((rest) => (
+        <Link to={`/${rest.id}`}>
+          <figure className="restaurantgallery-figure">
+            <div className="restaurantgallery-container">
+              <img
+                className="restaurantgallery-img"
+                src={rest.mainPictureUrl}
+                alt="restaurant"
+              />
+            </div>
+            <div className="restaurantgallery-container">
+              <p>{rest.name}</p>
+              <p>{rest.location}</p>
+              <p>{rest.name}</p>
+            </div>
+          </figure>
+        </Link>
+      ))}
     </main>
   );
-}
+};
 export default RestaurantGallery;

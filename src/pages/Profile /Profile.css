@@ -1,14 +1,16 @@
 .profile-img {
-    width: 100px;
-    background: #fa7d09;
-    border-radius: 100px;
-    padding: 20px;
+  width: 100px;
+  background: #fa7d09;
+  border-radius: 100px;
+  padding: 20px;
 }
 .profile-section {
   background: #444141;
   border-radius: 25px;
   margin: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .profile-p {
-    margin: 30px;
+  margin: 30px;
 }

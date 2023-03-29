@@ -10,15 +10,8 @@ function ItemCard() {
         <p>Dish description</p>
         <p className="itemcard-dish-price">Dish price</p>
         </div>
-        
         <div className="itemcard-image-container">
-        <img
-          className="itemcard-img"
-          src="./assets/burger-pic.png"
-          alt="dish"
-        />
         </div>
-        
       </figure>
       </ Link>
     </main>
