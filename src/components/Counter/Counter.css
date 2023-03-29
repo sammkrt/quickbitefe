@@ -1,11 +1,10 @@
 .button-container {
   background: #f8ece0;
- 
   border-radius: 15px;
-  margin: auto;
   color: #444141;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 15px;
 }
 .counter-output {
   font-size: 30px;

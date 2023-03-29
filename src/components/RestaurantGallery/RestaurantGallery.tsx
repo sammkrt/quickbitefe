@@ -10,13 +10,15 @@ const RestaurantGallery: React.FC<Props> = ({ restaurant }) => {
       {restaurant.map((rest) => (
         <Link to={`/${rest.id}`}>
           <figure className="restaurantgallery-figure">
-            <p>{rest.name}</p>
-            <img
-              className="restaurantgallery-img"
-              src={rest.mainPictureUrl}
-              alt="restaurant"
-            />
             <div className="restaurantgallery-container">
+              <img
+                className="restaurantgallery-img"
+                src={rest.mainPictureUrl}
+                alt="restaurant"
+              />
+            </div>
+            <div className="restaurantgallery-container">
+              <p>{rest.name}</p>
               <p>{rest.location}</p>
               <p>{rest.name}</p>
             </div>

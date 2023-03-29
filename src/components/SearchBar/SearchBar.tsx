@@ -4,7 +4,8 @@ function SearchBar() {
     <main className="searchbar-main">
       <input className="searchbar-input" type="text" placeholder="Search" />
       <button className="searchbar-button">
-        <img className="searchbar-img" src="./assets/search.png" alt="search" />
+        {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
+        Search
       </button>
     </main>
   );

@@ -20,3 +20,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
+::placeholder {
+  color: #f8ece0;
+}

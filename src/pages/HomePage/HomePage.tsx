@@ -20,7 +20,7 @@ function HomePage() {
     <main className="home-main">
       <HeaderComponent />
       <SearchBar />
-      <h1 className="home-h1">Categories</h1>
+      {/* <h1 className="home-h1">Categories</h1>
       <div className="container">
       <section className="home-section">
         <img className="home-img" src="./assets/pizza.png" alt="pizza" />
@@ -39,7 +39,7 @@ function HomePage() {
         <p>Pasta</p>
         </section>
       </div>
-      <h1 className="home-h1">Restaurants</h1>
+      <h1 className="home-h1">Restaurants</h1> */}
       <RestaurantGallery restaurant={restaurant}/>
       <FooterComponent />
     </main>
