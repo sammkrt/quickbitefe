@@ -19,16 +19,16 @@ interface User {
   phoneNumber: string;
 }
 function App() {
-  const [user, setUser] = useState("");
-  const fetchUser = async () => {
-    const result = await fetch("http://localhost:5242/Auth/user");
-    const data = await result.json();
-    setUser(data);
-    console.log(data);
-  };
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  // const [user, setUser] = useState("");
+  // const fetchUser = async () => {
+  //   const result = await fetch("http://localhost:5242/Auth/user");
+  //   const data = await result.json();
+  //   setUser(data);
+  //   console.log(data);
+  // };
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
   return (
     <Routes>
       <Route path="/" element={<StartPage />} />

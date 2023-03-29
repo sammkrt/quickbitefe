@@ -1,24 +1,38 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
+
+
+interface LoginDto {
+  email: string;
+  password: string;
+}
+
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data: LoginDto = { email, password };
     const response = await fetch("http://localhost:5242/Auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify(data),
+      credentials : "include"
     });
+
     if (response.ok) {
-      const data = await response.json();
-      console.log(data);
+      navigate("/home");
     } else {
-      console.error("Failed to login");
+      setError("Failed to login");
     }
   };
+
   return (
     <main className="login-main">
       <h1 className="login-h1">Quickbite</h1>
@@ -39,17 +53,22 @@ function LoginPage() {
           <input
             className="login-input"
             placeholder="Password"
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
+          {error && <p className="login-error">{error}</p>}
           <button className="login-button" type="submit">
             Login
           </button>
         </form>
+        <p>
+          Don't have an account? <Link to="/register">Sign up</Link>
+        </p>
       </section>
     </main>
   );
 }
+
 export default LoginPage;

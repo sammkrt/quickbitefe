@@ -1,39 +1,60 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
+
 function RegisterPage() {
+  const navigate = useNavigate();
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:5242/Auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstname,
-        lastname,
-        email,
-        password,
-        address,
-        phonenumber,
-      }),
-    });
-    if (response.ok) {
-    } else {
-      console.error("Failed to register");
+    try {
+      const response = await fetch("http://localhost:5242/Auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          password,
+          address,
+          phonenumber,
+        }),
+      });
+
+      if (response.ok) {
+        setSuccessMessage('Registration successful');
+        setTimeout(() => {
+          navigate('/login');
+        }, 1500);
+      } else {
+        setSuccessMessage("");
+        setErrorMessage("Registration failed.");
+      }
+    } catch (error) {
+      console.error("Error registering:", error);
+      setSuccessMessage("");
+      setErrorMessage("Error registering. Please try again.");
     }
   };
+
   return (
     <main className="register-main">
       <h1 className="register-h1">Quickbite</h1>
       <img className="register-img" src="./assets/logo.png" alt="logo" />
       <section className="register-section">
         <h2 className="register-h2">Register</h2>
+        {successMessage && <div className="register-success">{successMessage}</div>}
+        {errorMessage && <div className="register-error">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <p className="register-p">First name</p>
           <input
@@ -85,16 +106,17 @@ function RegisterPage() {
             className="register-input"
             placeholder="Phone number"
             type="text"
-            value={phonenumber}
-            onChange={(e) => setPhonenumber(e.target.value)}
+            value={phonenumber} onChange={(e) => setPhonenumber(e.target.value)}
           />
           <br />
           <button className="register-button" type="submit">
             Register
           </button>
         </form>
+        {successMessage && <div>{successMessage}</div>}
       </section>
     </main>
   );
 }
+
 export default RegisterPage;
