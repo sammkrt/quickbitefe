@@ -23,10 +23,10 @@ function Profile() {
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    if (!jwt) {
-      navigate('/login');
-      return;
-    }
+    // if (!jwt) {
+    //   navigate('/login');
+    //   return;
+    // }
 
     fetch('http://localhost:5242/Auth/user', {
       method: 'GET',
