@@ -1,5 +1,5 @@
 .restaurant-img {
-  width: 100%;
+  width: 200px;
 }
 .restaurant-container {
   display: flex;
@@ -14,11 +14,16 @@
   margin-left: 40px;
 }
 .restaurant-section {
-  background: #f8ece0;
+  color: #f8ece0;
   border-radius: 25px;
-  color: #444141;
-  margin-left: 45px;
-  margin-right: 45px;
+  background: #444141;
+  margin-left: 25px;
+  margin-right: 25px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.restaurant-p {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

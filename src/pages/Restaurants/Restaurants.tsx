@@ -21,23 +21,18 @@ function Restaurant() {
     fetchRestaurantById(id);
   }, []);
   return (
-    <main>
+    <main className="restaurant-main">
       <HeaderComponent />
-      <figure className="restaurantgallery-figure">
-        <li>{restaurantById?.name}</li>
-        <img
-          className="restaurantgallery-img"
-          src={restaurantById?.mainPictureUrl}
-          alt="restaurant"
+      <img
+        className="restaurant-img"
+        src={restaurantById?.mainPictureUrl}
+        alt="restaurant"
         />
-        <div className="restaurantgallery-container">
-          <p>{restaurantById?.description}</p>
-          <p>{restaurantById?.email}</p>
-        </div>
-        {restaurantById?.dishes.map((dish) => (
-          <li>{dish.name}</li>
-        ))}
-      </figure>
+        <section className="restaurant-section">
+        <p className="restaurant-p">{restaurantById?.name}</p>
+          <p className="restaurant-p">{restaurantById?.description}</p>
+          <p className="restaurant-p">{restaurantById?.email}</p>
+      </section>
       <ItemGallery dishes={dishes} />
       <FooterComponent />
     </main>

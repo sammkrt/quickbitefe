@@ -1,9 +1,11 @@
 .button-container {
   background: #f8ece0;
-  width: 150px;
+ 
   border-radius: 15px;
   margin: auto;
   color: #444141;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .counter-output {
   font-size: 30px;

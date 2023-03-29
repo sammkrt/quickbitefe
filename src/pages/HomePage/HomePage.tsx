@@ -5,9 +5,7 @@ import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGall
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import "./HomePage.css";
-
 function HomePage() {
-
   const [restaurant, setRestaurant] = useState<RestaurantModel[]>([])
   const fetchRestaurant = async()=> {
   const result = await fetch("http://localhost:5242/api/Restaurants");
@@ -18,10 +16,6 @@ function HomePage() {
   useEffect(()=> {
     fetchRestaurant();
   }, []);
-  
-
-
-
   return (
     <main className="home-main">
       <HeaderComponent />
