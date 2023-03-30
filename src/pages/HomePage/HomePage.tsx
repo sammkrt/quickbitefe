@@ -70,7 +70,6 @@ function HomePage() {
   return (
     <main className="home-main">
       <HeaderComponent />
-      {/* <SearchBar /> */}
       <div className="home-search-container">
         <input
           className="home-input"
@@ -83,23 +82,15 @@ function HomePage() {
       <h1 className="home-h1">Categories</h1>
       <div className="container">
         <section onClick={filterPizza} className="home-section">
-          <img className="home-img" src="./assets/pizza.png" alt="pizza" />
           <p>Pizza</p>
         </section>
         <section onClick={filterBurger} className="home-section">
-          <img className="home-img" src="./assets/burger.png" alt="burger" />
           <p>Burger</p>
         </section>
         <section onClick={filterBitterballen} className="home-section">
-          <img
-            className="home-img"
-            src="./assets/chinese.png"
-            alt="Bitterballen"
-          />
           <p>Bitterballen</p>
         </section>
         <section onClick={filterPasta} className="home-section">
-          <img className="home-img" src="./assets/pasta.png" alt="pasta" />
           <p>Pasta</p>
         </section>
       </div>

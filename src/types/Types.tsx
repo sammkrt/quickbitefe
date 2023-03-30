@@ -17,3 +17,18 @@ export interface RestaurantModel {
   mainPictureUrl: string;
   dishes: Dish[];
 }
+export interface LoginDto {
+  email: string;
+  password: string;
+}
+export interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  phoneNumber: string;
+}
+export interface ErrorResponse {
+  message: string;
+}
