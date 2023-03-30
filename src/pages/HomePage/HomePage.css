@@ -46,8 +46,8 @@
   cursor: pointer;
 }
 .home-section:after {
-  background: #ff0000;
+  background: #fa7d09;
 }
 .home-section:active {
-  background: red;
+  background: #fa7d09;
 }

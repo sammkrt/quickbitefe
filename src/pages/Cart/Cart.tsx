@@ -13,7 +13,7 @@ function Cart() {
         <ItemCard />
         <div className="cart-container">
           <Counter />
-          <button className="cart-delete-button">Delete</button>
+          <button className="cart-add-button">Add to cart</button>
         </div>
         <figure className="cart-figure">
           <div>

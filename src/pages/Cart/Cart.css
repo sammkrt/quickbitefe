@@ -7,13 +7,13 @@
   color: #444141;
   background: #f8ece0;
 }
-.cart-delete-button {
-  background: #1f262e;
-  color: #f8ece0;
+.cart-add-button {
+  color: #444141;
   border: 0;
   font-size: 25px;
   border-radius: 15px;
   padding: 5px 10px;
+  background: #f8ece0;
 }
 .cart-figure {
   background: #444141;
