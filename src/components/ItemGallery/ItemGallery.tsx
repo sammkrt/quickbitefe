@@ -20,32 +20,13 @@ interface User {
   cartId: number;
 }
 const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
-  const addToCart = (dishId: any, quantity: any) => {};
-  const [dishId, setdishId] = useState("");
-  const [quantity, setquantity] = useState("");
-  const [cartId,setCartId] = useState();
+
+  const [dishId, setdishId] = useState(""); 
   const [user, setUser] = useState<User | null>(null);
   
 
 
-  const handleAddToCart = async (dishId : number) => {
-    const response = await fetch(`http://localhost:5242/api/Carts?userId=${user?.id}}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dishId,
-        quantity,
-      }),
-    });
-    if (response.ok) {
-      
-    } else {
-      console.error("Failed to register");
-    }
-    addToCart(dishId, quantity);
-  };
+ 
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -83,7 +64,7 @@ const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
     <main className="itemgallery-main">
       <h1>Menu</h1>
       {dishes.map((dish) => (
-        <ItemCard dish = {dish}/>
+        <ItemCard dish={dish} key={dish.id}/>
       ))}
     </main>
   );

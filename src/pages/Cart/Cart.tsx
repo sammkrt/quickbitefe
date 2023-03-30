@@ -10,7 +10,7 @@ function Cart() {
       <HeaderComponent />
       <section className="cart-section">
         <h1>My Cart</h1>
-        <ItemCard />
+        
         <div className="cart-container">
           <Counter />
           <button className="cart-delete-button">Delete</button>

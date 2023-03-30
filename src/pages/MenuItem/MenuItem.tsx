@@ -9,7 +9,7 @@ function MenuItem() {
     <main>
       <main>
         <HeaderComponent />
-        <ItemCard />
+       
         <div className="itemcard-container">
           <Counter />
           <Link to="/cart">
