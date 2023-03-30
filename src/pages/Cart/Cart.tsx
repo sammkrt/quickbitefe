@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { cartDish, CartModel, Dish, User } from "../../types/Types";
+import { cartDish, CartModel, User } from "../../types/Types";
 import Counter from "../../components/Counter/Counter";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
