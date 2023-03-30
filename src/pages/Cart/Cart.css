@@ -30,7 +30,7 @@
 }
 .cart-container {
   background: #444141;
-  border-radius: 0 0 25px 25px;
+  border-radius: 25px;
   margin-left: 40px;
   margin-right: 40px;
   padding-top: 20px;
@@ -39,7 +39,6 @@
   padding-bottom: 20px;
   display: flex;
   justify-content: space-around;
-  margin-top: -40px;
 }
 .cart-span {
   color: #fa7d09;

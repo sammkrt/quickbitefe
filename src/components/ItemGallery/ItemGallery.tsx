@@ -1,9 +1,6 @@
-import { Dish } from "../../types/Types";
+import { itemGalleryProps } from "../../types/Types";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ItemGallery.css";
-interface itemGalleryProps {
-  dishes: Dish[];
-}
 const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
   return (
     <main className="itemgallery-main">

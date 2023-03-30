@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ItemCard from "../../components/ItemCard/ItemCard";
 import Counter from "../../components/Counter/Counter";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";

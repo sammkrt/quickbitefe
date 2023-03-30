@@ -59,8 +59,10 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
         <div className="itemgallery-info">
           <p className="itemgallery-p">{Dish.categoryId}</p>
           <p className="itemgallery-p">{Dish.name}</p>
-          <p className="itemgallery-p">{Dish.description}</p>
-          <p className="itemgallery-dish-price">{Dish.price}</p>
+          <p className="itemgallery-p">
+              Price:{" "}
+              <span className="itemgallery-dish-price">{Dish.price}</span>
+            </p>
           <div className="itemgallery-container">
             <div className="button-container">
               <button className="control-button" onClick={decrease}>

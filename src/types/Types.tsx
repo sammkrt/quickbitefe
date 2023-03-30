@@ -46,6 +46,23 @@ export interface User {
     totalPrice: number;
   }[];
 }
+export interface CartModel {
+  id: number;
+  cartDishes: cartDish[];
+  totalPrice: number;
+}
+export interface cartDish {
+  id: number;
+  dishId: number;
+  quantity: number;
+  restaurant: number;
+}
 export interface itemCardProps {
   dish: Dish;
+}
+export interface itemGalleryProps {
+  dishes: Dish[];
+}
+export interface CartDishProps {
+  cartDishes: cartDish;
 }
