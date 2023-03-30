@@ -42,6 +42,7 @@ function App() {
       <Route path="/:id" element={<Restaurant />} />
       <Route path="/myOrder" element={<MyOrder />} />
     </Routes>
+    
   );
 }
 export default App;

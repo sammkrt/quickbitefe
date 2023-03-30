@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import ItemGallery from "../../components/ItemGallery/ItemGallery";
+import { User } from "../../types/Types";
+
 import "./LoginPage.css";
 
 
@@ -7,9 +10,13 @@ interface LoginDto {
   email: string;
   password: string;
 }
+interface LoginProps{
+  User : User
+}
 
-function LoginPage() {
+const LoginPage  = () => {
   const [email, setEmail] = useState("");
+  const [cartId,setCartId] = useState();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -27,6 +34,8 @@ function LoginPage() {
     });
 
     if (response.ok) {
+      const result = await response.json();
+      setCartId(result.cartId)
       navigate("/home");
     } else {
       setError("Failed to login");
@@ -67,6 +76,7 @@ function LoginPage() {
           Don't have an account? <Link to="/register">Sign up</Link>
         </p>
       </section>
+      
     </main>
   );
 }
