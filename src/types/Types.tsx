@@ -1,3 +1,10 @@
+export interface LoginDto {
+  email: string;
+  password: string;
+}
+export interface ErrorResponse {
+  message: string;
+}
 export interface Dish {
   id: number;
   name: string;
@@ -17,18 +24,28 @@ export interface RestaurantModel {
   mainPictureUrl: string;
   dishes: Dish[];
 }
-export interface LoginDto {
-  email: string;
-  password: string;
-}
 export interface User {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
+  password: string;
   address: string;
   phoneNumber: string;
+  cartId: number;
+  cart: {
+    id: number;
+    cartDishes: any[];
+    totalPrice: number;
+  };
+  orders: {
+    id: number;
+    dishes: any;
+    address: string;
+    userId: number;
+    totalPrice: number;
+  }[];
 }
-export interface ErrorResponse {
-  message: string;
+export interface itemCardProps {
+  dish: Dish;
 }
