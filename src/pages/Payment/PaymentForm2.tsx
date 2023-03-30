@@ -80,15 +80,12 @@ const PaymentForm2 = () => {
           const data = await response.text();
           console.log(data); // prints "Payment succeeded" or "Payment failed"
         } else {
-          // handle error from server
           console.error("Error completing payment:", response.statusText);
         }
       } catch (error) {
-        // handle error from fetch
         console.error("Error completing payment:", error);
       }
     } catch (error) {
-      // handle error from fetch
       console.error("Error creating payment method:", error);
     }
   };
