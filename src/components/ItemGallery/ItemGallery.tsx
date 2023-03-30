@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Dish } from "../../types/Types";
 import Counter from "../Counter/Counter";
@@ -7,26 +6,6 @@ interface itemGalleryProps {
   dishes: Dish[];
 }
 const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
-  const addToCart = (dishId: any, quantity: any) => {};
-  const [dishId, setdishId] = useState("");
-  const [quantity, setquantity] = useState("");
-  const handleAddToCart = async () => {
-    const response = await fetch("http://localhost:5242/api/Carts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dishId,
-        quantity,
-      }),
-    });
-    if (response.ok) {
-    } else {
-      console.error("Failed to register");
-    }
-    addToCart(dishId, quantity);
-  };
   return (
     <main className="itemgallery-main">
       <h1>Menu</h1>
@@ -39,12 +18,7 @@ const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
             <div className="itemgallery-container">
               <Counter />
               <Link to="/cart">
-                <button
-                  className="itemgallery-button"
-                  onClick={handleAddToCart}
-                >
-                  Add to Cart
-                </button>
+                <button className="itemgallery-button">Add to Cart</button>
               </Link>
             </div>
           </div>

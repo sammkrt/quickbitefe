@@ -6,7 +6,9 @@
 }
 .restaurantgallery-img {
   width: 150px;
+  height: 150px;
   margin: 10px 35px 10px 10px;
+  border-radius: 15px;
 }
 .restaurantgallery-h2 {
   color: #fa7d09;

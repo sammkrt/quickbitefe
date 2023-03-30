@@ -1,21 +1,10 @@
 import { useEffect, useState } from "react";
 import { RestaurantModel } from "../../types/Types";
-import SearchBar from "../../components/SearchBar/SearchBar";
 import RestaurantGallery from "../../components/RestaurantGallery/RestaurantGallery";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import "./HomePage.css";
 function HomePage() {
-  // const [restaurant, setRestaurant] = useState<RestaurantModel[]>([]);
-  // const fetchRestaurant = async () => {
-  //   const result = await fetch("http://localhost:5242/api/Restaurants");
-  //   const data = await result.json();
-  //   setRestaurant(data);
-  //   console.log(data);
-  // };
-  // useEffect(() => {
-  //   fetchRestaurant();
-  // }, []);
   const [restaurant, setRestaurant] = useState<RestaurantModel[]>([]);
   const fetchRestaurant = async () => {
     const result = await fetch("http://localhost:5242/api/Restaurants");
@@ -89,9 +78,7 @@ function HomePage() {
           placeholder="Search"
           onChange={(e: any) => filterCard(e.target.value)}
         />
-        <button className="home-button">
-          Search
-        </button>
+        <button className="home-button">Search</button>
       </div>
       <h1 className="home-h1">Categories</h1>
       <div className="container">
