@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Profile.css';
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Profile.css'
 
 interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-  phoneNumber: string;
+  id: number
+  firstName: string
+  lastName: string
+  email: string
+  address: string
+  phoneNumber: string
 }
 
 interface ErrorResponse {
-  message: string;
+  message: string
 }
 
-function Profile() {
-  const [user, setUser] = useState<User | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
+function Profile () {
+  const [user, setUser] = useState<User | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('jwt')
     // if (!jwt) {
     //   navigate('/login');
     //   return;
@@ -31,50 +31,50 @@ function Profile() {
     fetch('http://localhost:5242/Auth/user', {
       method: 'GET',
       headers: { Authorization: `Bearer ${jwt}` },
-      credentials: 'include',
+      credentials: 'include'
     })
-      .then(response => {
+      .then(async response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Network response was not ok')
         }
-        return response.json();
+        return await response.json()
       })
       .then(data => {
-        setUser(data);
-        setLoading(false);
+        setUser(data)
+        setLoading(false)
       })
       .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-        setError((error as ErrorResponse)?.message ?? 'Unknown error');
-        setLoading(false);
-      });
-  }, [navigate]);
+        console.error('There was a problem with the fetch operation:', error)
+        setError((error as ErrorResponse)?.message ?? 'Unknown error')
+        setLoading(false)
+      })
+  }, [navigate])
 
   const handleLogout = async () => {
     const response = await fetch('http://localhost:5242/Auth/logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-    });
+      credentials: 'include'
+    })
 
     if (response.ok) {
       // localStorage.removeItem('jwt');
-      navigate('/login');
+      navigate('/login')
     } else {
-      setError('Failed to logout');
+      setError('Failed to logout')
     }
-  };
+  }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error}</div>
   }
 
-  if (!user) {
-    return <div>User not found</div>;
+  if (user == null) {
+    return <div>User not found</div>
   }
 
   return (
@@ -91,7 +91,7 @@ function Profile() {
         </button>
       </section>
     </main>
-  );
+  )
 }
 
-export default Profile;
+export default Profile

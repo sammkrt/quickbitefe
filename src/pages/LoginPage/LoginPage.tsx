@@ -1,37 +1,40 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import "./LoginPage.css";
-
+import { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import './LoginPage.css'
 
 interface LoginDto {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
-function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+function LoginPage () {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data: LoginDto = { email, password };
-    const response = await fetch("http://localhost:5242/Auth/login", {
-      method: "POST",
+    event.preventDefault()
+    const data: LoginDto = { email, password }
+    const response = await fetch('http://localhost:5242/Auth/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
+        credentials: 'include'
+
       },
       body: JSON.stringify(data),
-      credentials : "include"
-    });
+      credentials: 'include'
+    })
 
     if (response.ok) {
-      navigate("/home");
+      const resp = await response.json();
+      console.log(resp);
+      navigate('/home')
     } else {
-      setError("Failed to login");
+      setError('Failed to login')
     }
-  };
+  }
 
   return (
     <main className="login-main">
@@ -46,7 +49,7 @@ function LoginPage() {
             placeholder="Email"
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => { setEmail(e.target.value) }}
           />
           <br />
           <p className="login-p">Password</p>
@@ -55,7 +58,7 @@ function LoginPage() {
             placeholder="Password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => { setPassword(e.target.value) }}
           />
           <br />
           {error && <p className="login-error">{error}</p>}
@@ -68,7 +71,7 @@ function LoginPage() {
         </p>
       </section>
     </main>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage

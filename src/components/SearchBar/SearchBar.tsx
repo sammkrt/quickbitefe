@@ -1,38 +1,38 @@
-import { useEffect, useState } from "react";
-import { RestaurantModel } from "../../types/Types";
-import "./SearchBar.css";
-function SearchBar() {
-  const [restaurant, setRestaurant] = useState<RestaurantModel[]>([]);
+import { useEffect, useState } from 'react'
+import { type RestaurantModel } from '../../types/Types'
+import './SearchBar.css'
+function SearchBar () {
+  const [restaurant, setRestaurant] = useState<RestaurantModel[]>([])
   const fetchRestaurant = async () => {
-    const result = await fetch("http://localhost:5242/api/Restaurants");
-    const data = await result.json();
-    setRestaurant(data);
-    console.log(data);
-  };
+    const result = await fetch('http://localhost:5242/api/Restaurants')
+    const data = await result.json()
+    setRestaurant(data)
+    console.log(data)
+  }
   useEffect(() => {
-    fetchRestaurant();
-  }, []);
+    fetchRestaurant()
+  }, [])
   const filterCard = (value: any) => {
-    if (value == "") fetchRestaurant();
+    if (value == '') fetchRestaurant()
     setRestaurant((previousState) =>
       previousState.filter((restaurant) =>
         restaurant.dishes.some((dish) => dish.name.includes(value))
       )
-    );
-  };
+    )
+  }
   return (
     <main className="searchbar-main">
       <input
         className="searchbar-input"
         type="text"
         placeholder="Search"
-        onChange={(e: any) => filterCard(e.target.value)}
+        onChange={(e: any) => { filterCard(e.target.value) }}
       />
       <button className="searchbar-button">
         {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
         Search
       </button>
     </main>
-  );
+  )
 }
-export default SearchBar;
+export default SearchBar

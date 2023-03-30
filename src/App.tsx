@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import StartPage from "./pages/StartPage/StartPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import HomePage from "./pages/HomePage/HomePage";
-import Profile from "./pages/Profile /Profile";
-import Cart from "./pages/Cart/Cart";
-import MenuItem from "./pages/MenuItem/MenuItem";
-import Payment from "./pages/Payment/Payment";
-import Restaurant from "./pages/Restaurants/Restaurants";
-import MyOrder from "./pages/MyOrder/MyOrder";
-import "./App.css";
+import React, { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import StartPage from './pages/StartPage/StartPage'
+import RegisterPage from './pages/RegisterPage/RegisterPage'
+import LoginPage from './pages/LoginPage/LoginPage'
+import HomePage from './pages/HomePage/HomePage'
+import Profile from './pages/Profile /Profile'
+import Cart from './pages/Cart/Cart'
+import MenuItem from './pages/MenuItem/MenuItem'
+import Payment from './pages/Payment/Payment'
+import Restaurant from './pages/Restaurants/Restaurants'
+import MyOrder from './pages/MyOrder/MyOrder'
+import './App.css'
 interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-  phoneNumber: string;
+  firstName: string
+  lastName: string
+  email: string
+  address: string
+  phoneNumber: string
 }
-function App() {
+function App () {
   // const [user, setUser] = useState("");
   // const fetchUser = async () => {
   //   const result = await fetch("http://localhost:5242/Auth/user");
@@ -42,6 +42,6 @@ function App() {
       <Route path="/:id" element={<Restaurant />} />
       <Route path="/myOrder" element={<MyOrder />} />
     </Routes>
-  );
+  )
 }
-export default App;
+export default App

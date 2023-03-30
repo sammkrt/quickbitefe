@@ -1,32 +1,32 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Dish } from "../../types/Types";
-import Counter from "../Counter/Counter";
-import "./ItemGallery.css";
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { type Dish } from '../../types/Types'
+import Counter from '../Counter/Counter'
+import './ItemGallery.css'
 interface itemGalleryProps {
-  dishes: Dish[];
+  dishes: Dish[]
 }
 const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
-  const addToCart = (dishId: any, quantity: any) => {};
-  const [dishId, setdishId] = useState("");
-  const [quantity, setquantity] = useState("");
+  const addToCart = (dishId: any, quantity: any) => {}
+  const [dishId, setdishId] = useState('')
+  const [quantity, setquantity] = useState('')
   const handleAddToCart = async () => {
-    const response = await fetch("http://localhost:5242/api/Carts", {
-      method: "POST",
+    const response = await fetch('http://localhost:5242/api/Carts', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         dishId,
-        quantity,
-      }),
-    });
+        quantity
+      })
+    })
     if (response.ok) {
     } else {
-      console.error("Failed to register");
+      console.error('Failed to register')
     }
-    addToCart(dishId, quantity);
-  };
+    addToCart(dishId, quantity)
+  }
   return (
     <main className="itemgallery-main">
       <h1>Menu</h1>
@@ -51,6 +51,6 @@ const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
         </figure>
       ))}
     </main>
-  );
-};
-export default ItemGallery;
+  )
+}
+export default ItemGallery

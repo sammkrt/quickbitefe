@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import Counter from "../../components/Counter/Counter";
-import FooterComponent from "../../components/FooterComponent/FooterComponent";
-import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
-import ItemCard from "../../components/ItemCard/ItemCard";
-import "./Cart.css";
-function Cart() {
+import { Link } from 'react-router-dom'
+import Counter from '../../components/Counter/Counter'
+import FooterComponent from '../../components/FooterComponent/FooterComponent'
+import HeaderComponent from '../../components/HeaderComponent/HeaderComponent'
+import ItemCard from '../../components/ItemCard/ItemCard'
+import './Cart.css'
+function Cart () {
   return (
     <main>
       <HeaderComponent />
@@ -23,7 +23,7 @@ function Cart() {
               Subtotal : <span className="cart-span">cart.total</span>
             </p>
             <p>
-              Delivery cost :{" "}
+              Delivery cost :{' '}
               <span className="cart-span">restaurant.delivery</span>
             </p>
             <h2>
@@ -37,6 +37,6 @@ function Cart() {
       </section>
       <FooterComponent />
     </main>
-  );
+  )
 }
-export default Cart;
+export default Cart

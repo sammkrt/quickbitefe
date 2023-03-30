@@ -1,6 +1,6 @@
-import "./ItemCard.css";
-import { Link } from "react-router-dom";
-function ItemCard() {
+import './ItemCard.css'
+import { Link } from 'react-router-dom'
+function ItemCard () {
   return (
     <main>
       <Link to="/menuItem">
@@ -15,6 +15,6 @@ function ItemCard() {
       </figure>
       </ Link>
     </main>
-  );
+  )
 }
-export default ItemCard;
+export default ItemCard

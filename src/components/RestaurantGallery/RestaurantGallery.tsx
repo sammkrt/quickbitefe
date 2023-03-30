@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { RestaurantModel } from "../../types/Types";
-import "./RestaurantGallery.css";
+import { Link } from 'react-router-dom'
+import { type RestaurantModel } from '../../types/Types'
+import './RestaurantGallery.css'
 interface Props {
-  restaurant: RestaurantModel[];
+  restaurant: RestaurantModel[]
 }
 const RestaurantGallery: React.FC<Props> = ({ restaurant }) => {
   return (
@@ -26,6 +26,6 @@ const RestaurantGallery: React.FC<Props> = ({ restaurant }) => {
         </Link>
       ))}
     </main>
-  );
-};
-export default RestaurantGallery;
+  )
+}
+export default RestaurantGallery

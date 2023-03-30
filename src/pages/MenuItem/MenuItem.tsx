@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import ItemCard from "../../components/ItemCard/ItemCard";
-import Counter from "../../components/Counter/Counter";
-import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
-import FooterComponent from "../../components/FooterComponent/FooterComponent";
-import "./MenuItem.css";
-function MenuItem() {
+import { Link } from 'react-router-dom'
+import ItemCard from '../../components/ItemCard/ItemCard'
+import Counter from '../../components/Counter/Counter'
+import HeaderComponent from '../../components/HeaderComponent/HeaderComponent'
+import FooterComponent from '../../components/FooterComponent/FooterComponent'
+import './MenuItem.css'
+function MenuItem () {
   return (
     <main>
       <main>
@@ -19,6 +19,6 @@ function MenuItem() {
         <FooterComponent />
       </main>
     </main>
-  );
+  )
 }
-export default MenuItem;
+export default MenuItem
