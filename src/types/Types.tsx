@@ -19,6 +19,20 @@ export interface RestaurantModel {
   dishes: Dish[];
 }
 
+
+export interface CartModel {
+  id : number,
+  cartDishes : cartDish[],
+  totalPrice : number
+}
+
+export interface cartDish {
+  id: number,
+  dishId: number,
+  quantity : number,
+  restaurant : number
+}
+
 export interface User {
   id: number;
   firstName: string;

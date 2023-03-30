@@ -20,6 +20,8 @@ function Restaurant() {
   useEffect(() => {
     fetchRestaurantById(id);
   }, []);
+
+  
   return (
     <main className="restaurant-main">
       <HeaderComponent />
