@@ -23,42 +23,6 @@ const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
 
   const [dishId, setdishId] = useState(""); 
   const [user, setUser] = useState<User | null>(null);
-  
-
-
- 
-
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    // if (!jwt) {
-    //   navigate('/login');
-    //   return;
-    // }
-
-    fetch('http://localhost:5242/Auth/user', {
-      method: 'GET',
-      headers: { Authorization: `Bearer ${jwt}` },
-      credentials: 'include',
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setUser(data);
-        console.log(user?.cartId);
-      })
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  }, []);
-
-
-
-
-
 
   return (
     <main className="itemgallery-main">
