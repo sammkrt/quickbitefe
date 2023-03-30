@@ -42,3 +42,12 @@
   display: flex;
   justify-content: center;
 }
+.home-section:hover {
+  cursor: pointer;
+}
+.home-section:after {
+  background: #ff0000;
+}
+.home-section:active {
+  background: red;
+}

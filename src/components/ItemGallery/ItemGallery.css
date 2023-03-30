@@ -1,38 +1,38 @@
 .itemgallery-figure {
-    background: #444141;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
+  background: #444141;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
 }
 .itemgallery-dish-price {
-    color: #fa7d09;
-    margin-left: 10px;
-    margin-right: 10px;
+  color: #fa7d09;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .itemgallery-info {
-    text-align: left;
+  text-align: left;
 }
 .itemgallery-p {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .itemgallery-button {
-    background: #f8ece0;
-    border: 0;
-    font-size: 25px;
-    border-radius: 15px;
-    margin: auto;
-    color: #444141;
-    padding: 5px 10px;
-    margin-left: 25px;
-  }
-  .itemgallery-container {
-    background: #444141;
-    border-radius: 0 0 25px 25px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: -40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-  }
+  background: #f8ece0;
+  border: 0;
+  font-size: 25px;
+  border-radius: 15px;
+  margin: auto;
+  color: #444141;
+  padding: 5px 10px;
+  margin-left: 25px;
+}
+.itemgallery-container {
+  background: #444141;
+  border-radius: 0 0 25px 25px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: -40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+}
