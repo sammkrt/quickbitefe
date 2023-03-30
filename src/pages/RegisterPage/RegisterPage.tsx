@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
-
 function RegisterPage() {
   const navigate = useNavigate();
   const [firstname, setFirstname] = useState("");
@@ -12,7 +11,6 @@ function RegisterPage() {
   const [phonenumber, setPhonenumber] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -30,11 +28,10 @@ function RegisterPage() {
           phonenumber,
         }),
       });
-
       if (response.ok) {
-        setSuccessMessage('Registration successful');
+        setSuccessMessage("Registration successful");
         setTimeout(() => {
-          navigate('/login');
+          navigate("/login");
         }, 1500);
       } else {
         setSuccessMessage("");
@@ -46,14 +43,15 @@ function RegisterPage() {
       setErrorMessage("Error registering. Please try again.");
     }
   };
-
   return (
     <main className="register-main">
       <h1 className="register-h1">Quickbite</h1>
       <img className="register-img" src="./assets/logo.png" alt="logo" />
       <section className="register-section">
         <h2 className="register-h2">Register</h2>
-        {successMessage && <div className="register-success">{successMessage}</div>}
+        {successMessage && (
+          <div className="register-success">{successMessage}</div>
+        )}
         {errorMessage && <div className="register-error">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <p className="register-p">First name</p>
@@ -106,17 +104,20 @@ function RegisterPage() {
             className="register-input"
             placeholder="Phone number"
             type="text"
-            value={phonenumber} onChange={(e) => setPhonenumber(e.target.value)}
+            value={phonenumber}
+            onChange={(e) => setPhonenumber(e.target.value)}
           />
           <br />
           <button className="register-button" type="submit">
             Register
           </button>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
         </form>
         {successMessage && <div>{successMessage}</div>}
       </section>
     </main>
   );
 }
-
 export default RegisterPage;

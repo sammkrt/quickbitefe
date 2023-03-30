@@ -6,7 +6,6 @@ export interface Dish {
   price: number;
   restaurantId: number;
 }
-
 export interface RestaurantModel {
   id: number;
   name: string;

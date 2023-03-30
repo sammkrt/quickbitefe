@@ -28,10 +28,7 @@ function SearchBar() {
         placeholder="Search"
         onChange={(e: any) => filterCard(e.target.value)}
       />
-      <button className="searchbar-button">
-        {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
-        Search
-      </button>
+      <button className="searchbar-button">Search</button>
     </main>
   );
 }

@@ -17,7 +17,6 @@ function FooterComponent() {
           <img className="footer-img" src="./assets/home-icon.png" alt="home" />
         </Link>
       </div>
-
       <div className="footer-container">
         <Link to="/cart">
           <img className="footer-img" src="./assets/cart-icon.png" alt="cart" />

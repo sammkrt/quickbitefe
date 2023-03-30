@@ -15,7 +15,6 @@ function Cart() {
           <Counter />
           <button className="cart-delete-button">Delete</button>
         </div>
-        <hr />
         <figure className="cart-figure">
           <div>
             <h2>Price details</h2>

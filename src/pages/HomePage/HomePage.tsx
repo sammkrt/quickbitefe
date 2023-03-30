@@ -50,7 +50,6 @@ function HomePage() {
         )
       )
     );
-    // document.querySelector(".home-section").style.background = "#ff0000";
   };
   const filterBurger = () => {
     setRestaurant((previousState) =>
@@ -92,7 +91,6 @@ function HomePage() {
         />
         <button className="home-button">
           Search
-          {/* <img className="searchbar-img" src="./assets/search.png" alt="search" /> */}
         </button>
       </div>
       <h1 className="home-h1">Categories</h1>
