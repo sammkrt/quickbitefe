@@ -1,17 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ErrorResponse, User } from "../../types/Types";
+import FooterComponent from "../../components/FooterComponent/FooterComponent";
+import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import "./Profile.css";
-interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-  phoneNumber: string;
-}
-interface ErrorResponse {
-  message: string;
-}
 function Profile() {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -63,6 +55,7 @@ function Profile() {
   }
   return (
     <main className="profile-main">
+      <HeaderComponent />
       <h1 className="profile-h1">User Profile</h1>
       <img className="profile-img" src="./assets/user.png" alt="user" />
       <section className="profile-section">
@@ -76,6 +69,7 @@ function Profile() {
           Logout
         </button>
       </section>
+      <FooterComponent />
     </main>
   );
 }

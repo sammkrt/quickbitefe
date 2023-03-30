@@ -14,7 +14,10 @@ const ItemGallery: React.FC<itemGalleryProps> = ({ dishes }) => {
           <div className="itemgallery-info">
             <p className="itemgallery-p">{dish.name}</p>
             <p className="itemgallery-p">{dish.description}</p>
-            <p className="itemgallery-dish-price">{dish.price}</p>
+            <p className="itemgallery-p">
+              Price:{" "}
+              <span className="itemgallery-dish-price">{dish.price}</span>
+            </p>
             <div className="itemgallery-container">
               <Counter />
               <Link to="/cart">

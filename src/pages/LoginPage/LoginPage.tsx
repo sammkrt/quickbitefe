@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { LoginDto } from "../../types/Types";
 import "./LoginPage.css";
-interface LoginDto {
-  email: string;
-  password: string;
-}
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

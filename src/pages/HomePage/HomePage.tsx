@@ -70,7 +70,6 @@ function HomePage() {
   return (
     <main className="home-main">
       <HeaderComponent />
-      {/* <SearchBar /> */}
       <div className="home-search-container">
         <input
           className="home-input"

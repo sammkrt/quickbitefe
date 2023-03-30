@@ -14,6 +14,7 @@
   border-radius: 15px;
   padding: 5px 10px;
   background: #f8ece0;
+  margin-left: 10px;
 }
 .cart-figure {
   background: #444141;
@@ -22,6 +23,7 @@
   justify-content: space-around;
   text-align: left;
   margin-top: 40px;
+  padding: 20px;
 }
 .cart-section {
   margin: 10px;
@@ -31,11 +33,13 @@
   border-radius: 0 0 25px 25px;
   margin-left: 40px;
   margin-right: 40px;
-  margin-top: -40px;
   padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 20px;
   display: flex;
   justify-content: space-around;
+  margin-top: -40px;
 }
 .cart-span {
   color: #fa7d09;
