@@ -41,6 +41,7 @@ function Profile() {
       })
       .then(data => {
         setUser(data);
+        console.log(user?.lastName)
         setLoading(false);
       })
       .catch(error => {
