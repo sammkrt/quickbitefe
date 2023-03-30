@@ -6,7 +6,7 @@
 .home-section {
   background: #444141;
   border-radius: 25px;
-  margin: 20px;
+  margin: 10px;
   height: 120px;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -34,11 +34,10 @@
   border: 0;
   border-radius: 25px;
   margin-left: 5px;
-  padding: 8px;
   color: #f8ece0;
-  width: 50px;
+  width: 80px;
 }
-.home-search-container{
+.home-search-container {
   display: flex;
   justify-content: center;
 }

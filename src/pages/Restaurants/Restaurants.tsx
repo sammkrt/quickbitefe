@@ -27,11 +27,11 @@ function Restaurant() {
         className="restaurant-img"
         src={restaurantById?.mainPictureUrl}
         alt="restaurant"
-        />
-        <section className="restaurant-section">
+      />
+      <section className="restaurant-section">
         <p className="restaurant-p">{restaurantById?.name}</p>
-          <p className="restaurant-p">{restaurantById?.description}</p>
-          <p className="restaurant-p">{restaurantById?.email}</p>
+        <p className="restaurant-p">{restaurantById?.description}</p>
+        <p className="restaurant-p">{restaurantById?.email}</p>
       </section>
       <ItemGallery dishes={dishes} />
       <FooterComponent />
