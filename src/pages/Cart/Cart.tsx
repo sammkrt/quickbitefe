@@ -10,6 +10,7 @@ function Cart() {
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
   const [cartDishes, setCartDishes] = useState<cartDish[]>([]);
+  
   const fetchCartId = async (id: any) => {
     if (user?.cartId) {
       const result = await fetch(
@@ -22,6 +23,8 @@ function Cart() {
       console.log(idCart);
     }
   };
+
+
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -47,18 +50,17 @@ function Cart() {
     fetchCartId(idCart);
   }, [user?.cartId]);
   let { idCart } = useParams();
+
+
+  
   return (
     <main>
       <HeaderComponent />
       <section className="cart-section">
         <h1>My Cart</h1>
         {cartDishes.map((cartDishes) => (
-        <CartDish cartDishes={cartDishes} />
+        <CartDish cartDishes={cartDishes}/>
       ))}
-        <div className="cart-container">
-          <Counter />
-          <button className="cart-add-button">Update cart</button>
-        </div>
         <figure className="cart-figure">
           <div>
             <h2>Price details</h2>

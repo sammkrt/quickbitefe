@@ -23,6 +23,7 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
       console.error("Failed to register");
     }
   };
+  
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {

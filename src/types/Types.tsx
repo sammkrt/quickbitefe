@@ -65,4 +65,5 @@ export interface itemGalleryProps {
 }
 export interface CartDishProps {
   cartDishes: cartDish;
+  
 }
