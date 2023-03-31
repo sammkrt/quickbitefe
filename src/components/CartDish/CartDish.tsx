@@ -73,23 +73,26 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   };
 
   return (
-    <div>
-       <div className="cart-container">
-       <div className="button-container">
-              <button className="control-button" onClick={decrease}>
-                -
-              </button>
-              <span className="counter-output">{counter}</span>
-              <button className="control-button" onClick={increase}>
-                +
-              </button>
-            </div>
-          <p>{dishesById?.name}</p>
-          <p>{cartDishes.quantity}</p>
-          <button className="cart-add-button" onClick={()=> {handlePatchCart()}}>Update cart</button>
+    <>
+    {cartDishes.quantity > 0 ? (
+      <div className="cart-container">
+        <div className="button-container">
+          <button className="control-button" onClick={decrease}>
+            -
+          </button>
+          <span className="counter-output">{counter}</span>
+          <button className="control-button" onClick={increase}>
+            +
+          </button>
         </div>
-      
-    </div>
+        <p>{dishesById?.name}</p>
+        <p>{cartDishes.quantity}</p>
+        <button className="cart-add-button" onClick={handlePatchCart}>
+          Update cart
+        </button>
+      </div>
+    ) : null}
+  </>
   );
 };
 
