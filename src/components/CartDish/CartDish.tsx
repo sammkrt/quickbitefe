@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CartDishProps, Dish, User } from "../../types/Types";
-import Counter from "../Counter/Counter";
-
 const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   const [user, setUser] = useState<User | null>(null);
-  //counter
   const [counter, setCounter] = useState(cartDishes.quantity);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const increase = () => {
     setCounter((count) => count + 1);
   };
@@ -15,7 +13,6 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
       setCounter((count) => count - 1);
     }
   };
-
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -37,8 +34,6 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   }, []);
-
-  //fetchDishbyId
   let { id } = useParams();
   const [dishesById, setDishesById] = useState<Dish>();
   const fetchDishesById = async (id: any) => {
@@ -51,7 +46,6 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   useEffect(() => {
     fetchDishesById(id);
   }, [id]);
-
   const handlePatchCart = async () => {
     const response = await fetch(`http://localhost:5242/api/Carts/`, {
       method: "PATCH",
@@ -65,35 +59,39 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
       }),
     });
     if (response.ok) {
-      // update the cartDishes prop in the parent component
       updateCart({ ...cartDishes, quantity: counter });
-    } else {
+      const result = await fetch(
+        `http://localhost:5242/api/Carts/${user?.cartId}`
+      );
+      const data = await result.json();
+      setTotalPrice(data.totalPrice);
+      console.log(data);
       console.error("Failed to patch cart");
+      console.log(totalPrice);
     }
   };
-
   return (
-    <>
-    {cartDishes.quantity > 0 ? (
-      <div className="cart-container">
-        <div className="button-container">
-          <button className="control-button" onClick={decrease}>
-            -
-          </button>
-          <span className="counter-output">{counter}</span>
-          <button className="control-button" onClick={increase}>
-            +
+    <main>
+      {cartDishes.quantity > 0 ? (
+        <div className="cart-container">
+          <div className="button-container">
+            <button className="control-button" onClick={decrease}>
+              -
+            </button>
+            <span className="counter-output">{counter}</span>
+            <button className="control-button" onClick={increase}>
+              +
+            </button>
+          </div>
+          <p>{dishesById?.name}</p>
+          <p>{dishesById?.price}$$</p>
+          <p>{cartDishes.quantity}</p>
+          <button className="cart-add-button" onClick={handlePatchCart}>
+            Update cart
           </button>
         </div>
-        <p>{dishesById?.name}</p>
-        <p>{cartDishes.quantity}</p>
-        <button className="cart-add-button" onClick={handlePatchCart}>
-          Update cart
-        </button>
-      </div>
-    ) : null}
-  </>
+      ) : null}
+    </main>
   );
 };
-
 export default CartDish;

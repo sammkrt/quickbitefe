@@ -66,5 +66,4 @@ export interface itemGalleryProps {
 export interface CartDishProps {
   cartDishes: cartDish;
   updateCart: (cartDish: cartDish) => void;
-  
 }

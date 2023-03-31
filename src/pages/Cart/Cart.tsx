@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { cartDish, CartModel, User } from "../../types/Types";
-import Counter from "../../components/Counter/Counter";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
-import "./Cart.css";
 import CartDish from "../../components/CartDish/CartDish";
+import "./Cart.css";
 function Cart() {
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
   const [cartDishes, setCartDishes] = useState<cartDish[]>([]);
-  
   const fetchCartId = async (id: any) => {
     if (user?.cartId) {
       const result = await fetch(
@@ -23,8 +21,6 @@ function Cart() {
       console.log(idCart);
     }
   };
-
-
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -50,8 +46,7 @@ function Cart() {
     fetchCartId(idCart);
   }, [user?.cartId]);
   let { idCart } = useParams();
-
-  const updateCart = (updatedCartDish : any) => {
+  const updateCart = (updatedCartDish: any) => {
     const updatedCartDishes = cartDishes.map((cartDish) => {
       if (cartDish.id === updatedCartDish.id) {
         return updatedCartDish;
@@ -60,20 +55,18 @@ function Cart() {
     });
     setCartDishes(updatedCartDishes);
   };
-
-  
-
-
   return (
     <main>
       <HeaderComponent />
       <section className="cart-section">
         <h1>My Cart</h1>
         {cartDishes.map((cartDishes) => (
-        <CartDish  key={cartDishes.id}
-        cartDishes={cartDishes}
-        updateCart={updateCart}/>
-      ))}
+          <CartDish
+            key={cartDishes.id}
+            cartDishes={cartDishes}
+            updateCart={updateCart}
+          />
+        ))}
         <figure className="cart-figure">
           <div>
             <h2>Price details</h2>
