@@ -51,15 +51,26 @@ function Cart() {
   }, [user?.cartId]);
   let { idCart } = useParams();
 
+  const updateCart = (updatedCartDish : any) => {
+    const updatedCartDishes = cartDishes.map((cartDish) => {
+      if (cartDish.id === updatedCartDish.id) {
+        return updatedCartDish;
+      }
+      return cartDish;
+    });
+    setCartDishes(updatedCartDishes);
+  };
 
-  
+
   return (
     <main>
       <HeaderComponent />
       <section className="cart-section">
         <h1>My Cart</h1>
         {cartDishes.map((cartDishes) => (
-        <CartDish cartDishes={cartDishes}/>
+        <CartDish  key={cartDishes.id}
+        cartDishes={cartDishes}
+        updateCart={updateCart}/>
       ))}
         <figure className="cart-figure">
           <div>

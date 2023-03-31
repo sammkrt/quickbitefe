@@ -3,17 +3,17 @@ import { useParams } from "react-router-dom";
 import { CartDishProps, Dish, User } from "../../types/Types";
 import Counter from "../Counter/Counter";
 
-const CartDish: React.FC<CartDishProps> = ({ cartDishes }) => {
+const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   const [user, setUser] = useState<User | null>(null);
   //counter
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(cartDishes.quantity);
   const increase = () => {
     setCounter((count) => count + 1);
   };
   const decrease = () => {
-    // if (counter > 0) {
+    if (counter > 0) {
       setCounter((count) => count - 1);
-    // }
+    }
   };
 
   useEffect(() => {
@@ -38,8 +38,7 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes }) => {
       });
   }, []);
 
-
-//fetchDishbyId
+  //fetchDishbyId
   let { id } = useParams();
   const [dishesById, setDishesById] = useState<Dish>();
   const fetchDishesById = async (id: any) => {
@@ -53,30 +52,21 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes }) => {
     fetchDishesById(id);
   }, [id]);
 
-
-let finalQuantity = counter + cartDishes.quantity 
-if (finalQuantity < 0) {
-  finalQuantity = 0
-}
-
-
-
   const handlePatchCart = async () => {
-    const response = await fetch(
-      `http://localhost:5242/api/Carts/`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId : user?.id,
-          dishId : dishesById?.id,
-          quantity : finalQuantity,
-        }),
-      }
-    );
+    const response = await fetch(`http://localhost:5242/api/Carts/`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: user?.id,
+        dishId: dishesById?.id,
+        quantity: counter,
+      }),
+    });
     if (response.ok) {
+      // update the cartDishes prop in the parent component
+      updateCart({ ...cartDishes, quantity: counter });
     } else {
       console.error("Failed to patch cart");
     }
