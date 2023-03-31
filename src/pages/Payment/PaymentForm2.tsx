@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Payment.css'
 
 interface PaymentIntent {
   id: string;
@@ -7,9 +8,7 @@ interface PaymentIntent {
 }
 
 const PaymentForm2 = () => {
-  const [amount, setAmount] = useState<number>(0);
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null);
-  const [currency, setCurrency] = useState<string>("eur");
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryMonth, setExpiryMonth] = useState<number>(0);
   const [expiryYear, setExpiryYear] = useState<number>(0);
@@ -17,7 +16,6 @@ const PaymentForm2 = () => {
 
   const createPayment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
       const response = await fetch("http://localhost:5242/Payment", {
         method: "POST",
@@ -25,8 +23,8 @@ const PaymentForm2 = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount,
-          currency,
+          amount: parseFloat(event.currentTarget.amount.value),
+          currency: "eur",
         }),
       });
       if (response.ok) {
@@ -46,7 +44,6 @@ const PaymentForm2 = () => {
       return;
     }
     try {
-      // Create payment method
       const response = await fetch("http://localhost:5242/Payment/paymentmethod", {
         method: "POST",
         headers: {
@@ -60,14 +57,12 @@ const PaymentForm2 = () => {
         }),
       });
       if (!response.ok) {
-        // handle error from server
         console.error("Error creating payment method:", response.statusText);
         return;
       }
       const data = await response.json();
       console.log(data);
       try {
-        // Complete payment with payment intent
         const response = await fetch("http://localhost:5242/Payment/complete", {
           method: "POST",
           headers: {
@@ -78,7 +73,7 @@ const PaymentForm2 = () => {
 
         if (response.ok) {
           const data = await response.text();
-          console.log(data); // prints "Payment succeeded" or "Payment failed"
+          console.log(data);
         } else {
           console.error("Error completing payment:", response.statusText);
         }
@@ -91,44 +86,63 @@ const PaymentForm2 = () => {
   };
 
   return (
+    <div className="payment-main">
+    <h1 className="payment-h1">Payment Page</h1>
     <form onSubmit={createPayment}>
-      <label>
-        Amount:
-        <input type="number" value={amount} onChange={(e) => setAmount(parseFloat(e.target.value))} />
-      </label>
-      <br />
-      <label>
-        Currency:
-        <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-          <option value="eur">EUR</option>
-          <option value="usd">USD</option>
-          <option value="gbp">GBP</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Card Number:
-        <input type="text" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Expiry Month:
-        <input type="number" value={expiryMonth} onChange={(e) => setExpiryMonth(parseInt(e.target.value))} />
-      </label>
-      <br />
-      <label>
-        Expiry Year:
-        <input type="number" value={expiryYear} onChange={(e) => setExpiryYear(parseInt(e.target.value))} />
-      </label>
-      <br />
-      <label>
-        CVC:
-        <input type="text" value={cvc} onChange={(e) => setCvc(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Pay</button>
-</form>
-);
+      <div className="payment-section">
+        <h2 className="payment-h2">Payment Details</h2>
+        <label className="payment-label">
+          Amount:
+          <input className="payment-input" type="number" name="amount" />
+        </label>
+        <br />
+        <label className="payment-label">
+          Card Number:
+          <input
+            className="payment-input"
+            type="text"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
+          />
+        </label>
+        <br />
+        <label className="payment-label">
+          Expiry Month:
+          <input
+            className="payment-input"
+            type="number"
+            value={expiryMonth}
+            onChange={(e) => setExpiryMonth(parseInt(e.target.value))}
+          />
+        </label>
+        <br />
+        <label className="payment-label">
+          Expiry Year:
+          <input
+            className="payment-input"
+            type="number"
+            value={expiryYear}
+            onChange={(e) => setExpiryYear(parseInt(e.target.value))}
+          />
+        </label>
+        <br />
+        <label className="payment-label">
+          CVC:
+          <input
+            className="payment-input"
+            type="text"
+            value={cvc}
+            onChange={(e) => setCvc(e.target.value)}
+          />
+        </label>
+        <br />
+        <button className="payment-button" type="submit">
+          Pay
+        </button>
+      </div>
+    </form>
+  </div>
+  );
 };
 
 export default PaymentForm2;
