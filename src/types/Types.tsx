@@ -67,3 +67,8 @@ export interface CartDishProps {
   cartDishes: cartDish;
   updateCart: (cartDish: cartDish) => void;
 }
+export interface PaymentIntent {
+  id: string;
+  amount: number;
+  currency: string;
+}

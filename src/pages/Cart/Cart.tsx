@@ -18,7 +18,7 @@ function Cart() {
       setCartById(data);
       setCartDishes(data.cartDishes);
       console.log(data);
-      console.log(idCart);
+      console.log(cartById);
     }
   };
   useEffect(() => {
@@ -46,7 +46,7 @@ function Cart() {
     fetchCartId(idCart);
   }, [user?.cartId]);
   let { idCart } = useParams();
-  const updateCart = (updatedCartDish: any) => {
+  const updateCart = async (updatedCartDish: any) => {
     const updatedCartDishes = cartDishes.map((cartDish) => {
       if (cartDish.id === updatedCartDish.id) {
         return updatedCartDish;
@@ -54,6 +54,11 @@ function Cart() {
       return cartDish;
     });
     setCartDishes(updatedCartDishes);
+    const result = await fetch(
+      `http://localhost:5242/api/Carts/${user?.cartId}`
+    );
+    const data = await result.json();
+    setCartById(data);
   };
   return (
     <main>
