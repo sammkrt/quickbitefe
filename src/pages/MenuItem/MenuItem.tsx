@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Counter from "../../components/Counter/Counter";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
@@ -10,9 +9,7 @@ function MenuItem() {
         <HeaderComponent />
         <div className="itemcard-container">
           <Counter />
-          <Link to="/cart">
-            <button className="addtocart-button">Add to Cart</button>
-          </Link>
+          <button className="addtocart-button">Add to Cart</button>
         </div>
         <FooterComponent />
       </main>

@@ -7,20 +7,20 @@ interface Props {
 const RestaurantGallery: React.FC<Props> = ({ restaurant }) => {
   return (
     <main>
-      {restaurant.map((rest) => (
-        <Link to={`/${rest.id}`}>
-          <figure className="restaurantgallery-figure">
+      {restaurant.map((restaurant) => (
+        <Link to={`/${restaurant.id}`}>
+          <figure className="restaurantgallery-figure" key={restaurant.id}>
             <div className="restaurantgallery-container">
               <img
                 className="restaurantgallery-img"
-                src={rest.mainPictureUrl}
+                src={restaurant.mainPictureUrl}
                 alt="restaurant"
               />
             </div>
             <div className="restaurantgallery-container">
-              <p>{rest.name}</p>
-              <p>{rest.location}</p>
-              <p>{rest.name}</p>
+              <p>{restaurant.name}</p>
+              <p>{restaurant.location}</p>
+              <p>{restaurant.name}</p>
             </div>
           </figure>
         </Link>
