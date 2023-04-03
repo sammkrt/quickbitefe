@@ -11,6 +11,8 @@ function RegisterPage() {
   const [phonenumber, setPhonenumber] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -43,6 +45,16 @@ function RegisterPage() {
       setErrorMessage("Error registering. Please try again.");
     }
   };
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const emailRegex = /\S+@\S+\.\S+/;
+    setEmail(event.target.value);
+    setEmailError(!emailRegex.test(event.target.value));
+  };
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    setPassword(event.target.value);
+    setPasswordError(!passwordRegex.test(event.target.value));
+  };
   return (
     <main className="register-main">
       <h1 className="register-h1">Quickbite</h1>
@@ -54,19 +66,19 @@ function RegisterPage() {
         )}
         {errorMessage && <div className="register-error">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
-          <p className="register-p">First name</p>
+          <p className="register-p">Name</p>
           <input
             className="register-input"
-            placeholder="First name"
+            placeholder="Name"
             type="text"
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
           />
           <br />
-          <p className="register-p">Last name</p>
+          <p className="register-p">Surname</p>
           <input
             className="register-input"
-            placeholder="Last name"
+            placeholder="Surname"
             type="text"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
@@ -74,21 +86,27 @@ function RegisterPage() {
           <br />
           <p className="register-p">Email</p>
           <input
-            className="register-input"
+            className={`register-input ${
+              emailError ? "register-input-error" : ""
+            }`}
             placeholder="Email"
-            type="text"
+            type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
           />
+          {emailError && <p>Invalid email address</p>}
           <br />
           <p className="register-p">Password</p>
           <input
-            className="register-input"
+            className={`register-input ${
+              passwordError ? "register-input-error" : ""
+            }`}
             placeholder="Password"
-            type="text"
+            type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
           />
+          {passwordError && <p>Minimum 8 charahers a capital and a special</p>}
           <br />
           <p className="register-p">Address</p>
           <input
@@ -99,10 +117,10 @@ function RegisterPage() {
             onChange={(e) => setAddress(e.target.value)}
           />
           <br />
-          <p className="register-p">Phone number</p>
+          <p className="register-p">Telophone</p>
           <input
             className="register-input"
-            placeholder="Phone number"
+            placeholder="Telephone"
             type="text"
             value={phonenumber}
             onChange={(e) => setPhonenumber(e.target.value)}

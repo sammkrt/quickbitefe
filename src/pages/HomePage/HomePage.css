@@ -19,7 +19,7 @@
   grid-template-columns: repeat(2, 1fr);
 }
 .home-img {
-  width: 80px;
+  width: 40px;
 }
 .home-input {
   background: #444141;
