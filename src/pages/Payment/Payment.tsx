@@ -147,8 +147,9 @@ const Payment = () => {
     }
   };
   return (
-    <div className="payment-main">
+    <main className="payment-main">
       <HeaderComponent />
+      <section className="payment-section">
       <h1 className="payment-h1">Payment Page</h1>
       <form onSubmit={createPayment}>
         <div className="payment-section">
@@ -210,8 +211,9 @@ const Payment = () => {
           <p>Processing payment...</p>
         </div>
       )}
+      </section>
       <FooterComponent />
-    </div>
+    </main>
   );
 };
 export default Payment;

@@ -1,6 +1,8 @@
 .payment-main {
   background-color: #1f262e;
   border-radius: 15px;
+}
+.payment-section {
   margin-left: 10px;
   margin-right: 10px;
 }
