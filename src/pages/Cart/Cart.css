@@ -12,11 +12,11 @@
   border: 0;
   font-size: 15px;
   border-radius: 15px;
-  padding: 5px 10px;
+  padding: 5px 15px;
   background: #f8ece0;
-  margin-left: 10px;
   height: 40px;
   margin-top: 20px;
+  background: #fa7d09;
 }
 .cart-figure {
   background: #444141;
@@ -26,6 +26,8 @@
   text-align: left;
   margin-top: 40px;
   padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .cart-container {
   background: #444141;

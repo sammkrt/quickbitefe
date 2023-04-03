@@ -81,23 +81,24 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
         <div className="cart-container">
           <div className="cart-container-left">
             <p>
+              Price: &nbsp;
               <span className="cartdish-span">{dishesById?.price}</span>
             </p>
-            <p>{cartDishes.quantity}</p>
+            <p>Amount: &nbsp; {cartDishes.quantity}</p>
           </div>
           <div className="button-container">
             <div className="cart-container-right">
-            <button className="control-button" onClick={decrease}>
-              -
-            </button>
-            <span className="counter-output">{counter}</span>
-            <button className="control-button" onClick={increase}>
-              +
-            </button>
-            <br />
-            <button className="cart-add-button" onClick={handlePatchCart}>
-              Update
-            </button>
+              <button className="control-button" onClick={decrease}>
+                -
+              </button>
+              <span className="counter-output">{counter}</span>
+              <button className="control-button" onClick={increase}>
+                +
+              </button>
+              <br />
+              <button className="cart-add-button" onClick={handlePatchCart}>
+                Update
+              </button>
             </div>
           </div>
         </div>
