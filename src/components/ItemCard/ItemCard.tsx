@@ -77,7 +77,7 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
                 handleAddToCart(Dish.id, counter);
               }}
             >
-              Add to Cart
+              Add
             </button>
           </div>
         </div>

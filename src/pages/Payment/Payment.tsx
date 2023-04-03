@@ -1,18 +1,69 @@
-import { useState } from "react";
-import { PaymentIntent } from "../../types/Types";
+import { useEffect, useState } from "react";
+import { CartModel, PaymentIntent, User } from "../../types/Types";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import "./Payment.css";
+import { useParams } from "react-router-dom";
 const Payment = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(
     null
   );
+  const [amount, setAmount] = useState(0);
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryMonth, setExpiryMonth] = useState<number>(0);
   const [expiryYear, setExpiryYear] = useState<number>(0);
   const [cvc, setCvc] = useState<string>("");
+
+
+//get amount
+const [user, setUser] = useState<User | null>(null);
+const [cartById, setCartById] = useState<CartModel>();
+
+const fetchCartId = async (id: any) => {
+  if (user?.cartId) {
+    const result = await fetch(
+      `http://localhost:5242/api/Carts/${user.cartId}`
+    );
+    const data = await result.json();
+    setCartById(data);
+    console.log(data);
+    console.log(cartById);
+  }
+};
+useEffect(() => {
+  const jwt = localStorage.getItem("jwt");
+  fetch("http://localhost:5242/Auth/user", {
+    method: "GET",
+    headers: { Authorization: `Bearer ${jwt}` },
+    credentials: "include",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      setUser(data);
+      console.log(user?.cartId);
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
+}, []);
+useEffect(() => {
+  fetchCartId(idCart);
+  if(cartById?.totalPrice){
+    setAmount(cartById?.totalPrice * 100);
+  }
+}, [user?.cartId]);
+let { idCart } = useParams();
+
+
+
   const createPayment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+  
     try {
       const response = await fetch("http://localhost:5242/Payment", {
         method: "POST",
@@ -20,7 +71,7 @@ const Payment = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: parseFloat(event.currentTarget.amount.value),
+          amount: amount,
           currency: "eur",
         }),
       });
@@ -84,65 +135,65 @@ const Payment = () => {
     }
   };
   return (
-    <div className="payment-main">
-      <HeaderComponent />
-      <h1 className="payment-h1">Payment Page</h1>
-      <form onSubmit={createPayment}>
-        <div className="payment-section">
-          <h2 className="payment-h2">Payment Details</h2>
-          <label className="payment-label">
-            Amount:
-            <input className="payment-input" type="number" name="amount" />
-          </label>
-          <br />
-          <label className="payment-label">
-            Card Number:
-            <input
-              className="payment-input"
-              type="text"
-              value={cardNumber}
-              onChange={(e) => setCardNumber(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="payment-label">
-            Expiry Month:
-            <input
-              className="payment-input"
-              type="number"
-              value={expiryMonth}
-              onChange={(e) => setExpiryMonth(parseInt(e.target.value))}
-            />
-          </label>
-          <br />
-          <label className="payment-label">
-            Expiry Year:
-            <input
-              className="payment-input"
-              type="number"
-              value={expiryYear}
-              onChange={(e) => setExpiryYear(parseInt(e.target.value))}
-            />
-          </label>
-          <br />
-          <label className="payment-label">
-            CVC:
-            <input
-              className="payment-input"
-              type="text"
-              value={cvc}
-              onChange={(e) => setCvc(e.target.value)}
-            />
-          </label>
-          <br />
-          <button className="payment-button" type="submit">
-            Pay
-          </button>
+    <main className="payment-main">
+    <HeaderComponent />
+    <h1 className="payment-h1">Payment Page</h1>
+    <form className="payment-form" onSubmit={createPayment}>
+      <div className="payment-section">
+        <label className="payment-label">
+         Amount: <span>{cartById?.totalPrice} euros</span>
+        </label>
+        <br />
+        <label className="payment-label">
+          Card Number:
+          <input
+            className="payment-input"
+            type="text"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
+          />
+        </label>
+        <br />
+        <div style={{display: 'flex', marginBottom: '20px'}}>
+          <div style={{flexGrow: 1, marginRight: '10px'}}>
+            <label className="payment-label">
+              Expiry Month:
+              <input
+                className="payment-input"
+                type="number"
+                value={expiryMonth}
+                onChange={(e) => setExpiryMonth(parseInt(e.target.value))}
+              />
+            </label>
+          </div>
+          <div style={{flexGrow: 1}}>
+            <label className="payment-label">
+              Expiry Year:
+              <input
+                className="payment-input"
+                type="number"
+                value={expiryYear}
+                onChange={(e) => setExpiryYear(parseInt(e.target.value))}
+              />
+            </label>
+          </div>
         </div>
-      </form>
-      <FooterComponent />
-    </div>
+        <label className="payment-label">
+          CVC:
+          <input
+            className="payment-input"
+            type="text"
+            value={cvc}
+            onChange={(e) => setCvc(e.target.value)}
+          />
+        </label>
+      </div>
+      <button className="payment-button" type="submit">Pay</button>
+    </form>
+    <FooterComponent />
+  </main>
   );
+  
 };
 
 export default Payment;

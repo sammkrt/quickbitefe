@@ -42,9 +42,9 @@ function HomePage() {
     );
     setFilteredRestaurant(filtered);
   };
-  const filterCacke = () => {
+  const filterCake = () => {
     const filtered = restaurant.filter((r) =>
-      r.dishes.some((dish) => dish.name.toLowerCase().includes("cacke"))
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("cake"))
     );
     setFilteredRestaurant(filtered);
   };
@@ -78,9 +78,9 @@ function HomePage() {
           <p>Burger</p>
           <img className="home-img" src="./assets/burger-logo.png" alt="burger" />
         </section>
-        <section onClick={filterCacke} className="home-section">
+        <section onClick={filterCake} className="home-section">
           <p>Cacke</p>
-          <img className="home-img" src="./assets/cacke-logo.png" alt="cacke" />
+          <img className="home-img" src="./assets/cake-logo.png" alt="cake" />
         </section>
         <section onClick={filterSpaghetti} className="home-section">
           <p>Spaghetti</p>
