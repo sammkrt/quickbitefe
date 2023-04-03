@@ -53,3 +53,6 @@
   padding: 10px 60px;
   width: 275px;
 }
+.register-input-error{
+  color: #fa7d09;
+}
