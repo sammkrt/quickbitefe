@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
+
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ function RegisterPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -60,6 +63,10 @@ function RegisterPage() {
     setPasswordError(!passwordRegex.test(event.target.value));
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <main className="register-main">
       <h1 className="register-h1">Quickbite</h1>
@@ -102,17 +109,27 @@ function RegisterPage() {
           )}
           
           <br />
-          <p className="register-p">Password</p>
-          <input
-            className={`register-input ${passwordError ? "register-input-error" : ""}`}
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-           {passwordError && (
-            <div className="register-error">Invalid password.</div>
-          )}
+<p className="register-p">Password</p>
+<div className="password-input-wrapper">
+  <input
+    className={`register-input ${passwordError ? "register-input-error" : ""}`}
+    placeholder="Password"
+    type={showPassword ? "text" : "password"}
+    value={password}
+    onChange={handlePasswordChange}
+  />
+  <button
+    className="toggle-password-button"
+    onClick={togglePasswordVisibility}
+    aria-label={showPassword ? "Hide password" : "Show password"}
+  >
+    {showPassword ? <FaEyeSlash /> : <FaEye />}
+  </button>
+</div>
+{passwordError && (
+  <div className="register-error">Invalid password.</div>
+)}
+
           
           <br />
           <p className="register-p">Address</p>

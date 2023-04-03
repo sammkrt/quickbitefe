@@ -73,3 +73,6 @@
 
 
 
+.register-input[type="password"] {
+  margin-left: 50px;
+  }
