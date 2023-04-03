@@ -72,3 +72,11 @@ export interface PaymentIntent {
   amount: number;
   currency: string;
 }
+export interface Order {
+  id: number;
+  dishes: Dish[];
+  address: string;
+  userId: number;
+  totalPrice: number;
+  restaurantName: string;
+}
