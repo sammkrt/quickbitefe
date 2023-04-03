@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { User, itemCardProps } from "../../types/Types";
 import { useEffect, useState } from "react";
 import "./ItemCard.css";
@@ -23,7 +22,7 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
       console.error("Failed to register");
     }
   };
-  
+
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -58,12 +57,10 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
     <main>
       <figure className="itemgallery-figure">
         <div className="itemgallery-info">
-          <p className="itemgallery-p">{Dish.categoryId}</p>
           <p className="itemgallery-p">{Dish.name}</p>
           <p className="itemgallery-p">
-              Price:{" "}
-              <span className="itemgallery-dish-price">{Dish.price}</span>
-            </p>
+            Price: <span className="itemgallery-dish-price">{Dish.price}</span>
+          </p>
           <div className="itemgallery-container">
             <div className="button-container">
               <button className="control-button" onClick={decrease}>
@@ -74,7 +71,6 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
                 +
               </button>
             </div>
-            <Link to="/cart">
               <button
                 className="itemgallery-button"
                 onClick={() => {
@@ -83,7 +79,6 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
               >
                 Add to Cart
               </button>
-            </Link>
           </div>
         </div>
       </figure>

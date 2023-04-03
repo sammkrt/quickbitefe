@@ -84,7 +84,7 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
             </button>
           </div>
           <p>{dishesById?.name}</p>
-          <p>{dishesById?.price}$$</p>
+          <p><span className="cartdish-span">{dishesById?.price}€</span></p>
           <p>{cartDishes.quantity}</p>
           <button className="cart-add-button" onClick={handlePatchCart}>
             Update cart
