@@ -46,12 +46,12 @@ function RegisterPage() {
     }
   };
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const emailRegex = /\S+@\S+\.\S+/;
+    const emailRegex = /\S+@\S+.\S+/;
     setEmail(event.target.value);
     setEmailError(!emailRegex.test(event.target.value));
   };
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
     setPassword(event.target.value);
     setPasswordError(!passwordRegex.test(event.target.value));
   };
