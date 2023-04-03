@@ -75,13 +75,6 @@ function Cart() {
         <figure className="cart-figure">
           <div>
             <h2>Price details</h2>
-            <p>
-              Subtotal : <span className="cart-span">cart.total</span>
-            </p>
-            <p>
-              Delivery cost :{" "}
-              <span className="cart-span">restaurant.delivery</span>
-            </p>
             <h2>
               Total cost :{" "}
               <span className="cart-span">{cartById?.totalPrice}</span>

@@ -6,79 +6,72 @@ import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import "./HomePage.css";
 function HomePage() {
   const [restaurant, setRestaurant] = useState<RestaurantModel[]>([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState<RestaurantModel[]>([]);
+
   const fetchRestaurant = async () => {
     const result = await fetch("http://localhost:5242/api/Restaurants");
     const data = await result.json();
     setRestaurant(data);
-    console.log(data);
+    setFilteredRestaurant(data);
   };
+
   useEffect(() => {
     fetchRestaurant();
   }, []);
-  const filterCard = (value: any) => {
+
+  const filterCard = (value: string) => {
     if (value === "") {
-      fetchRestaurant();
+      setFilteredRestaurant(restaurant);
     } else {
-      setRestaurant((previousState) =>
-        previousState.filter((restaurant) =>
-          restaurant.dishes.some((dish) =>
-            value
-              .toLowerCase()
-              .split(" ")
-              .every((word: any) => dish.name.toLowerCase().includes(word))
-          )
+      const filtered = restaurant.filter((r) =>
+        r.dishes.some((dish) =>
+          dish.name.toLowerCase().includes(value.toLowerCase())
         )
       );
+      setFilteredRestaurant(filtered);
     }
   };
+
   const filterPizza = () => {
-    setRestaurant((previousState) =>
-      previousState.filter((restaurant) =>
-        restaurant.dishes.some((dish) =>
-          dish.name.toLowerCase().includes("pizza")
-        )
-      )
+    const filtered = restaurant.filter((r) =>
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("pizza"))
     );
+    setFilteredRestaurant(filtered);
   };
+
   const filterBurger = () => {
-    setRestaurant((previousState) =>
-      previousState.filter((restaurant) =>
-        restaurant.dishes.some((dish) =>
-          dish.name.toLowerCase().includes("burger")
-        )
-      )
+    const filtered = restaurant.filter((r) =>
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("burger"))
     );
+    setFilteredRestaurant(filtered);
   };
+
   const filterBitterballen = () => {
-    setRestaurant((previousState) =>
-      previousState.filter((restaurant) =>
-        restaurant.dishes.some((dish) =>
-          dish.name.toLowerCase().includes("bitterballen")
-        )
-      )
+    const filtered = restaurant.filter((r) =>
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("bitterballen"))
     );
+    setFilteredRestaurant(filtered);
   };
+
   const filterPasta = () => {
-    setRestaurant((previousState) =>
-      previousState.filter((restaurant) =>
-        restaurant.dishes.some((dish) =>
-          dish.name.toLowerCase().includes("pasta")
-        )
-      )
+    const filtered = restaurant.filter((r) =>
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("pasta"))
     );
+    setFilteredRestaurant(filtered);
   };
+
   return (
     <main className="home-main">
       <HeaderComponent />
       <div className="home-search-container">
-        <input
-          className="home-input"
-          type="text"
-          placeholder="Search"
-          onChange={(e: any) => filterCard(e.target.value)}
-        />
-        <button className="home-button">Search</button>
-      </div>
+      <input
+        className="home-input"
+        type="text"
+        placeholder="Search"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => filterCard(e.target.value)}
+      />
+      <button className="home-button">Search</button>
+    </div>
       <h1 className="home-h1">Categories</h1>
       <div className="container">
         <section onClick={filterPizza} className="home-section">
@@ -99,7 +92,7 @@ function HomePage() {
         </section>
       </div>
       <h1 className="home-h1">Restaurants</h1>
-      <RestaurantGallery restaurant={restaurant} />
+      <RestaurantGallery restaurant={filteredRestaurant} />
       <FooterComponent />
     </main>
   );
