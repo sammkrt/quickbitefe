@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { PaymentIntent } from "../../types/Types";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
-import { PaymentIntent } from "../../types/Types";
 import "./Payment.css";
 const Payment = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(

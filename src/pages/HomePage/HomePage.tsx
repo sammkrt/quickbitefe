@@ -9,7 +9,6 @@ function HomePage() {
   const [filteredRestaurant, setFilteredRestaurant] = useState<
     RestaurantModel[]
   >([]);
-
   const fetchRestaurant = async () => {
     const result = await fetch("http://localhost:5242/api/Restaurants");
     const data = await result.json();
@@ -20,7 +19,6 @@ function HomePage() {
   useEffect(() => {
     fetchRestaurant();
   }, []);
-
   const filterCard = (value: string) => {
     if (value === "") {
       setFilteredRestaurant(restaurant);
@@ -33,35 +31,30 @@ function HomePage() {
       setFilteredRestaurant(filtered);
     }
   };
-
   const filterPizza = () => {
     const filtered = restaurant.filter((r) =>
       r.dishes.some((dish) => dish.name.toLowerCase().includes("pizza"))
     );
     setFilteredRestaurant(filtered);
   };
-
   const filterBurger = () => {
     const filtered = restaurant.filter((r) =>
       r.dishes.some((dish) => dish.name.toLowerCase().includes("burger"))
     );
     setFilteredRestaurant(filtered);
   };
-
   const filterBitterballen = () => {
     const filtered = restaurant.filter((r) =>
       r.dishes.some((dish) => dish.name.toLowerCase().includes("bitterballen"))
     );
     setFilteredRestaurant(filtered);
   };
-
   const filterPasta = () => {
     const filtered = restaurant.filter((r) =>
       r.dishes.some((dish) => dish.name.toLowerCase().includes("pasta"))
     );
     setFilteredRestaurant(filtered);
   };
-
   return (
     <main className="home-main">
       <HeaderComponent />

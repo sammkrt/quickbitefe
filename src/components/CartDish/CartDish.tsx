@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CartDishProps, Dish, User } from "../../types/Types";
+import "./CartDish.css";
 const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   const [user, setUser] = useState<User | null>(null);
   const [counter, setCounter] = useState(cartDishes.quantity);
@@ -84,7 +85,9 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
             </button>
           </div>
           <p>{dishesById?.name}</p>
-          <p><span className="cartdish-span">{dishesById?.price}€</span></p>
+          <p>
+            <span className="cartdish-span">{dishesById?.price}€</span>
+          </p>
           <p>{cartDishes.quantity}</p>
           <button className="cart-add-button" onClick={handlePatchCart}>
             Update cart
