@@ -20,7 +20,7 @@ function Cart() {
       console.log(data);
       console.log(cartById);
     }
-  }, [user?.cartId]);
+  }, [user?.cartId, cartById]);
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
