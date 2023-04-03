@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
+
 function RegisterPage() {
   const navigate = useNavigate();
   const [firstname, setFirstname] = useState("");
@@ -11,6 +12,9 @@ function RegisterPage() {
   const [phonenumber, setPhonenumber] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -43,6 +47,19 @@ function RegisterPage() {
       setErrorMessage("Error registering. Please try again.");
     }
   };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const emailRegex = /\S+@\S+\.\S+/;
+    setEmail(event.target.value);
+    setEmailError(!emailRegex.test(event.target.value));
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    setPassword(event.target.value);
+    setPasswordError(!passwordRegex.test(event.target.value));
+  };
+
   return (
     <main className="register-main">
       <h1 className="register-h1">Quickbite</h1>
@@ -74,21 +91,29 @@ function RegisterPage() {
           <br />
           <p className="register-p">Email</p>
           <input
-            className="register-input"
+            className={`register-input ${emailError ? "register-input-error" : ""}`}
             placeholder="Email"
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
           />
+          {emailError && (
+            <div className="register-error">Invalid email address.</div>
+          )}
+          
           <br />
           <p className="register-p">Password</p>
           <input
-            className="register-input"
+            className={`register-input ${passwordError ? "register-input-error" : ""}`}
             placeholder="Password"
-            type="text"
+            type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
           />
+           {passwordError && (
+            <div className="register-error">Invalid password.</div>
+          )}
+          
           <br />
           <p className="register-p">Address</p>
           <input

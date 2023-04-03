@@ -53,3 +53,23 @@
   padding: 10px 60px;
   width: 275px;
 }
+
+
+.register-input-error {
+  border: 2px solid red;
+}
+
+
+
+.register-input[type="password"]::-webkit-text-security-disc {
+  color: transparent;
+  margin-right: 5px;
+}
+
+.register-input[type="password"]::-webkit-text-security-disc:before {
+  content: "•";
+  color: black;
+}
+
+
+
