@@ -127,7 +127,7 @@ function RegisterPage() {
   </button>
 </div>
 {passwordError && (
-  <div className="register-error">Invalid password.</div>
+  <div className="register-error">Capital letters 8 characters minimum.</div>
 )}
 
           
