@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CartModel, PaymentIntent, User } from "../../types/Types";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import HeaderComponent from "../../components/HeaderComponent/HeaderComponent";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
 import "./Payment.css";
@@ -10,13 +10,15 @@ const Payment = () => {
   );
   const [amount, setAmount] = useState<number>();
   const [cardNumber, setCardNumber] = useState<string>("");
-  const [expiryMonth, setExpiryMonth] = useState<number>(0);
-  const [expiryYear, setExpiryYear] = useState<number>(0);
+  const [expiryMonth, setExpiryMonth] = useState<number>();
+  const [expiryYear, setExpiryYear] = useState<number>();
   const [cvc, setCvc] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
+  const navigate = useNavigate();
+
   
   const fetchCartId = async (id: any) => {
     if (user?.cartId) {
@@ -127,8 +129,6 @@ const Payment = () => {
         }
       );
       if (response.status === 200) {
-        const data = await response.json();
-        console.log(data);
         try {
           setLoading(true);
           const response = await fetch("http://localhost:5242/Payment/complete", {
@@ -144,6 +144,9 @@ const Payment = () => {
             setLoading(false);
             setSuccess(true);
             postOrder();
+            setTimeout(() => {
+              navigate("/profile"); // Navigate to the Profile Page after a 2-second delay
+            }, 2000);
           } else {
             console.error("Error completing payment:", response.statusText);
             setLoading(false);
