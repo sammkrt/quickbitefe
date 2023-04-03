@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
 import { cartDish, CartModel, User } from "../../types/Types";
 import FooterComponent from "../../components/FooterComponent/FooterComponent";
@@ -9,7 +9,7 @@ function Cart() {
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
   const [cartDishes, setCartDishes] = useState<cartDish[]>([]);
-  const fetchCartId = async (id: any) => {
+  const fetchCartId = useCallback(async () => {
     if (user?.cartId) {
       const result = await fetch(
         `http://localhost:5242/api/Carts/${user.cartId}`
@@ -20,7 +20,7 @@ function Cart() {
       console.log(data);
       console.log(cartById);
     }
-  };
+  }, [user?.cartId]);
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -36,7 +36,7 @@ function Cart() {
       })
       .then((data) => {
         setUser(data);
-        console.log(data?.cartId); // Note: use 'data?.cartId' instead of 'user?.cartId'
+        console.log(data?.cartId);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -44,8 +44,8 @@ function Cart() {
   }, []);
   const { idCart } = useParams();
   useEffect(() => {
-    fetchCartId(idCart);
-  }, [user?.cartId, fetchCartId, idCart]);
+    fetchCartId();
+  }, [fetchCartId, idCart]);
   const updateCart = async (updatedCartDish: any) => {
     const updatedCartDishes = cartDishes.map((cartDish) => {
       if (cartDish.id === updatedCartDish.id) {

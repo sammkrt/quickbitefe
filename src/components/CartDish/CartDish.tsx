@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CartDishProps, Dish, User } from "../../types/Types";
 import "./CartDish.css";
@@ -37,13 +37,13 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   }, [user?.cartId]);
   let { id } = useParams();
   const [dishesById, setDishesById] = useState<Dish>();
-  const fetchDishesById = async (id: any) => {
+  const fetchDishesById = useCallback(async (id: any) => {
     const result = await fetch(
       `http://localhost:5242/api/Dishes/${cartDishes.dishId}`
     );
     const data = await result.json();
     setDishesById(data);
-  };
+  }, [cartDishes.dishId]);
   useEffect(() => {
     fetchDishesById(id);
   }, [id, fetchDishesById]);
