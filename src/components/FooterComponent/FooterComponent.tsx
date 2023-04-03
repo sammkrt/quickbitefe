@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./FooterComponent.css";
-function FooterComponent() {
+const FooterComponent: React.FC = () => {
   return (
     <main className="footer-main">
       <div className="footer-container">
@@ -24,5 +24,5 @@ function FooterComponent() {
       </div>
     </main>
   );
-}
+};
 export default FooterComponent;
