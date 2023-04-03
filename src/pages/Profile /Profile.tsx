@@ -114,7 +114,7 @@ function Profile() {
               {orders.map((order) => (
                 <tr key={order.id}>
                   <td>{order.id}</td>
-                  <td>{order.totalPrice}</td>
+                  <td>{order.totalPrice} €</td>
                   <td>
                     {order.dishes.map((dish, index) => {
                       if (
