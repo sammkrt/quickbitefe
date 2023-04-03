@@ -45,7 +45,7 @@ function Cart() {
   const { idCart } = useParams();
   useEffect(() => {
     fetchCartId();
-  }, [fetchCartId, idCart]);
+  }, [user?.cartId]);
   const updateCart = async (updatedCartDish: any) => {
     const updatedCartDishes = cartDishes.map((cartDish) => {
       if (cartDish.id === updatedCartDish.id) {

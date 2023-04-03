@@ -14,7 +14,6 @@ const Payment = () => {
   const [expiryYear, setExpiryYear] = useState<number>(0);
   const [cvc, setCvc] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
   const fetchCartId = async (id: any) => {
@@ -48,11 +47,12 @@ const Payment = () => {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-  }, []);
+  }, [user?.cartId]);
   useEffect(() => {
     fetchCartId(idCart);
     if (cartById?.totalPrice) {
       setAmount(cartById?.totalPrice * 100);
+      console.log(amount);
     }
   }, [user?.cartId]);
   let { idCart } = useParams();
@@ -78,11 +78,11 @@ const Payment = () => {
           amount: amount,
           currency: "eur",
         }),
+
       });
       if (response.ok) {
         const data = await response.json();
         setPaymentIntent(data);
-        console.log(paymentIntent?.id);
         completePayment();
         setLoading(true);
       }
@@ -131,7 +131,7 @@ const Payment = () => {
           const data = await response.text();
           console.log(data);
           setLoading(false);
-          setSuccess(true);
+
           postOrder();
         } else {
           console.error("Error completing payment:", response.statusText);
