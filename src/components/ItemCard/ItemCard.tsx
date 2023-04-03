@@ -56,6 +56,7 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
     <main>
       <figure className="itemgallery-figure">
         <div className="itemgallery-info">
+          <img className="itemcard-img" src={Dish.pictureUrl} alt="dish" />
           <p className="itemgallery-p">{Dish.name}</p>
           <p className="itemgallery-p">
             Price: <span className="itemgallery-dish-price">{Dish.price}</span>

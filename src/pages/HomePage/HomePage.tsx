@@ -42,15 +42,15 @@ function HomePage() {
     );
     setFilteredRestaurant(filtered);
   };
-  const filterBitterballen = () => {
+  const filterCacke = () => {
     const filtered = restaurant.filter((r) =>
-      r.dishes.some((dish) => dish.name.toLowerCase().includes("bitterballen"))
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("cacke"))
     );
     setFilteredRestaurant(filtered);
   };
-  const filterPasta = () => {
+  const filterSpaghetti = () => {
     const filtered = restaurant.filter((r) =>
-      r.dishes.some((dish) => dish.name.toLowerCase().includes("pasta"))
+      r.dishes.some((dish) => dish.name.toLowerCase().includes("spaghetti"))
     );
     setFilteredRestaurant(filtered);
   };
@@ -78,13 +78,13 @@ function HomePage() {
           <p>Burger</p>
           <img className="home-img" src="./assets/burger-logo.png" alt="burger" />
         </section>
-        <section onClick={filterBitterballen} className="home-section">
+        <section onClick={filterCacke} className="home-section">
           <p>Cacke</p>
           <img className="home-img" src="./assets/cacke-logo.png" alt="cacke" />
         </section>
-        <section onClick={filterPasta} className="home-section">
-          <p>Pasta</p>
-          <img className="home-img" src="./assets/pasta-logo.png" alt="pasta" />
+        <section onClick={filterSpaghetti} className="home-section">
+          <p>Spaghetti</p>
+          <img className="home-img" src="./assets/spaghetti-logo.png" alt="spaghetti" />
         </section>
       </div>
       <h1 className="home-h1">Restaurants</h1>
