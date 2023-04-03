@@ -8,7 +8,7 @@ const Payment = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(
     null
   );
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState<number>();
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryMonth, setExpiryMonth] = useState<number>(0);
   const [expiryYear, setExpiryYear] = useState<number>(0);
@@ -17,6 +17,7 @@ const Payment = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
+  
   const fetchCartId = async (id: any) => {
     if (user?.cartId) {
       const result = await fetch(
@@ -51,10 +52,20 @@ const Payment = () => {
   }, []);
   useEffect(() => {
     fetchCartId(idCart);
-    if (cartById?.totalPrice) {
-      setAmount(cartById?.totalPrice * 100);
-    }
   }, [user?.cartId]);
+
+  useEffect(() => {
+    if (!cartById) {
+      return;
+    }
+    const total = cartById.totalPrice * 100;
+    if (isNaN(total)) {
+      console.error(`Invalid total: ${total}`);
+      return;
+    }
+    setAmount(total);
+  }, [cartById]); 
+  
   let { idCart } = useParams();
   const postOrder = async () => {
     const response = await fetch(`http://localhost:5242/api/Orders/`, {
@@ -79,17 +90,20 @@ const Payment = () => {
           currency: "eur",
         }),
       });
-      if (response.ok) {
+      if (response.status === 200) {
         const data = await response.json();
         setPaymentIntent(data);
         console.log(paymentIntent?.id);
-        completePayment();
-        setLoading(true);
       }
     } catch {
       console.log("error");
     }
   };
+  useEffect(() => {
+    if (paymentIntent) {
+      completePayment();
+    }
+  }, [paymentIntent]);
   const completePayment = async () => {
     if (!paymentIntent) {
       console.error("Payment intent is null or undefined");
@@ -112,33 +126,34 @@ const Payment = () => {
           }),
         }
       );
-      if (!response.ok) {
-        console.error("Error creating payment method:", response.statusText);
-        setLoading(false);
-        return;
-      }
-      const data = await response.json();
-      console.log(data);
-      try {
-        const response = await fetch("http://localhost:5242/Payment/complete", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ PaymentIntentId: paymentIntent.id }),
-        });
-        if (response.ok) {
-          const data = await response.text();
-          console.log(data);
-          setLoading(false);
-          setSuccess(true);
-          postOrder();
-        } else {
-          console.error("Error completing payment:", response.statusText);
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log(data);
+        try {
+          setLoading(true);
+          const response = await fetch("http://localhost:5242/Payment/complete", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ PaymentIntentId: paymentIntent.id }),
+          });
+          if (response.status === 200) {
+            const data = await response.text();
+            console.log(data);
+            setLoading(false);
+            setSuccess(true);
+            postOrder();
+          } else {
+            console.error("Error completing payment:", response.statusText);
+            setLoading(false);
+          }
+        } catch (error) {
+          console.error("Error completing payment:", error);
           setLoading(false);
         }
-      } catch (error) {
-        console.error("Error completing payment:", error);
+      } else {
+        console.error("Error creating payment method:", response.statusText);
         setLoading(false);
       }
     } catch (error) {
@@ -209,6 +224,11 @@ const Payment = () => {
       {loading && (
         <div>
           <p>Processing payment...</p>
+        </div>
+      )}
+         {success && (
+        <div>
+          <p>Payment success.</p>
         </div>
       )}
       </section>
