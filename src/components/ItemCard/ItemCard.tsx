@@ -22,7 +22,6 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
       console.error("Failed to register");
     }
   };
-
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -43,7 +42,7 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-  }, []);
+  }, [user?.cartId]);
   const [counter, setCounter] = useState(1);
   const increase = () => {
     setCounter((count) => count + 1);
@@ -71,14 +70,14 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
                 +
               </button>
             </div>
-              <button
-                className="itemgallery-button"
-                onClick={() => {
-                  handleAddToCart(Dish.id, counter);
-                }}
-              >
-                Add to Cart
-              </button>
+            <button
+              className="itemgallery-button"
+              onClick={() => {
+                handleAddToCart(Dish.id, counter);
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </figure>

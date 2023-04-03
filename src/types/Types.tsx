@@ -72,3 +72,6 @@ export interface PaymentIntent {
   amount: number;
   currency: string;
 }
+export interface Props {
+  restaurant: RestaurantModel[];
+}

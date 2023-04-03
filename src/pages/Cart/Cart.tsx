@@ -36,16 +36,16 @@ function Cart() {
       })
       .then((data) => {
         setUser(data);
-        console.log(user?.cartId);
+        console.log(data?.cartId); // Note: use 'data?.cartId' instead of 'user?.cartId'
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
   }, []);
+  const { idCart } = useParams();
   useEffect(() => {
     fetchCartId(idCart);
-  }, [user?.cartId]);
-  let { idCart } = useParams();
+  }, [user?.cartId, fetchCartId, idCart]);
   const updateCart = async (updatedCartDish: any) => {
     const updatedCartDishes = cartDishes.map((cartDish) => {
       if (cartDish.id === updatedCartDish.id) {

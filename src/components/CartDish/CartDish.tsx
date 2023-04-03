@@ -34,7 +34,7 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-  }, []);
+  }, [user?.cartId]);
   let { id } = useParams();
   const [dishesById, setDishesById] = useState<Dish>();
   const fetchDishesById = async (id: any) => {
@@ -46,7 +46,7 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
   };
   useEffect(() => {
     fetchDishesById(id);
-  }, [id]);
+  }, [id, fetchDishesById]);
   const handlePatchCart = async () => {
     const response = await fetch(`http://localhost:5242/api/Carts/`, {
       method: "PATCH",
@@ -86,7 +86,7 @@ const CartDish: React.FC<CartDishProps> = ({ cartDishes, updateCart }) => {
           </div>
           <p>{dishesById?.name}</p>
           <p>
-            <span className="cartdish-span">{dishesById?.price}€</span>
+            <span className="cartdish-span">{dishesById?.price}</span>
           </p>
           <p>{cartDishes.quantity}</p>
           <button className="cart-add-button" onClick={handlePatchCart}>

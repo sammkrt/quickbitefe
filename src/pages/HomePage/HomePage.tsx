@@ -15,7 +15,6 @@ function HomePage() {
     setRestaurant(data);
     setFilteredRestaurant(data);
   };
-
   useEffect(() => {
     fetchRestaurant();
   }, []);
