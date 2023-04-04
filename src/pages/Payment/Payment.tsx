@@ -13,6 +13,8 @@ const Payment = () => {
   const [expiryMonth, setExpiryMonth] = useState<number>(0);
   const [expiryYear, setExpiryYear] = useState<number>(0);
   const [cvc, setCvc] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false); 
+  const [success, setSuccess] = useState<boolean>(false); 
 
 
 //get amount
@@ -60,9 +62,22 @@ useEffect(() => {
 let { idCart } = useParams();
 
 
+//post Order
+
+const postOrder = async () => {
+  const response = await fetch(`http://localhost:5242/api/Orders/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId: user?.id }),
+  });
+  if (response.ok) {
+   console.log("post order success")
+  }
+};
 
   const createPayment = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
   
     try {
       const response = await fetch("http://localhost:5242/Payment", {
@@ -80,6 +95,7 @@ let { idCart } = useParams();
         setPaymentIntent(data);
         console.log(paymentIntent?.id);
         completePayment();
+        setLoading(true);
       }
     } catch {
       console.log("error");
@@ -88,6 +104,7 @@ let { idCart } = useParams();
   const completePayment = async () => {
     if (!paymentIntent) {
       console.error("Payment intent is null or undefined");
+      setLoading(false);
       return;
     }
     try {
@@ -108,6 +125,7 @@ let { idCart } = useParams();
       );
       if (!response.ok) {
         console.error("Error creating payment method:", response.statusText);
+        setLoading(false);
         return;
       }
       const data = await response.json();
@@ -122,77 +140,93 @@ let { idCart } = useParams();
         });
 
         if (response.ok) {
+
           const data = await response.text();
           console.log(data);
+          setLoading(false);
+          setSuccess(true);
+          postOrder();
         } else {
           console.error("Error completing payment:", response.statusText);
+          setLoading(false);
         }
       } catch (error) {
         console.error("Error completing payment:", error);
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error creating payment method:", error);
+      setLoading(false);
     }
   };
   return (
+    
     <div className="payment-main">
-    <HeaderComponent />
-    <h1 className="payment-h1">Payment Page</h1>
-    <form onSubmit={createPayment}>
-      <div className="payment-section">
-       
-        <label className="payment-label">
-         Amount: <span>{cartById?.totalPrice} euros</span>
-        </label>
-        <br />
-        <label className="payment-label">
-          Card Number:
-          <input
-            className="payment-input"
-            type="text"
-            value={cardNumber}
-            onChange={(e) => setCardNumber(e.target.value)}
-          />
-        </label>
-        <br />
-        <div style={{display: 'flex', marginBottom: '20px'}}>
-          <div style={{flexGrow: 1, marginRight: '10px'}}>
-            <label className="payment-label">
-              Expiry Month:
-              <input
-                className="payment-input"
-                type="number"
-                value={expiryMonth}
-                onChange={(e) => setExpiryMonth(parseInt(e.target.value))}
-              />
-            </label>
+      <HeaderComponent />
+      
+      <h1 className="payment-h1">Payment Page</h1>
+      <form onSubmit={createPayment}>
+        <div className="payment-section">
+          <label className="payment-label">
+            Amount: <span>{cartById?.totalPrice} euros</span>
+          </label>
+          <br />
+          <label className="payment-label">
+            Card Number:
+            <input
+              className="payment-input"
+              type="text"
+              value={cardNumber}
+              onChange={(e) => setCardNumber(e.target.value)}
+            />
+          </label>
+          <br />
+          <div style={{ display: "flex", marginBottom: "20px" }}>
+            <div style={{ flexGrow: 1, marginRight: "10px" }}>
+              <label className="payment-label">
+                Expiry Month:
+                <input
+                  className="payment-input"
+                  type="number"
+                  value={expiryMonth}
+                  onChange={(e) => setExpiryMonth(parseInt(e.target.value))}
+                />
+              </label>
+            </div>
+            <div style={{ flexGrow: 1 }}>
+              <label className="payment-label">
+                Expiry Year:
+                <input
+                  className="payment-input"
+                  type="number"
+                  value={expiryYear}
+                  onChange={(e) => setExpiryYear(parseInt(e.target.value))}
+                />
+              </label>
+            </div>
           </div>
-          <div style={{flexGrow: 1}}>
-            <label className="payment-label">
-              Expiry Year:
-              <input
-                className="payment-input"
-                type="number"
-                value={expiryYear}
-                onChange={(e) => setExpiryYear(parseInt(e.target.value))}
-              />
-            </label>
-          </div>
+          <label className="payment-label">
+            CVC:
+            <input
+              className="payment-input"
+              type="text"
+              value={cvc}
+              onChange={(e) => setCvc(e.target.value)}
+            />
+          </label>
+          <br />
+          <button className="payment-button" type="submit">
+            Pay
+          </button>
+          
         </div>
-        <label className="payment-label">
-          CVC:
-          <input
-            className="payment-input"
-            type="text"
-            value={cvc}
-            onChange={(e) => setCvc(e.target.value)}
-          />
-        </label>
-      </div>
-      <button className="payment-button" type="submit">Pay</button>
-    </form>
-    <FooterComponent />
-  </div>
+        
+      </form>
+      {loading && <div><p>Processing payment...</p></div>}
+     
+      
+      <FooterComponent />
+    </div>
   );
   
 };

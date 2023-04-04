@@ -7,11 +7,15 @@
   margin-top: 50px;
   font-size: 50px;
 }
+
+
 .register-img {
   align-self: center;
   margin: 50px;
   width: 125px;
 }
+
+
 .register-section {
   background: #fa7d09;
   border-radius: 25px;
@@ -21,10 +25,14 @@
   padding-bottom: 10px;
   padding-top: 5px;
 }
+
+
 .register-h2 {
   font-size: 40px;
   margin-bottom: 40px;
 }
+
+
 .register-p {
   color: #1f262e;
   display: inline-block;
@@ -32,6 +40,8 @@
   text-align: left;
   width: 60px;
 }
+
+
 .register-input {
   background: #1f262e;
   border: 0;
