@@ -9,6 +9,8 @@ function HomePage() {
   const [filteredRestaurant, setFilteredRestaurant] = useState<
     RestaurantModel[]
   >([]);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
   const fetchRestaurant = async () => {
     const result = await fetch("http://localhost:5242/api/Restaurants");
     const data = await result.json();
@@ -89,7 +91,7 @@ function HomePage() {
       </div>
       <h1 className="home-h1">Restaurants</h1>
       <RestaurantGallery restaurant={filteredRestaurant} />
-      <FooterComponent />
+      <FooterComponent totalQuantity = {totalQuantity}/>
     </main>
   );
 }

@@ -10,7 +10,9 @@ function Cart() {
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel | undefined>();
   const [cartDishes, setCartDishes] = useState<cartDish[]>([]);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
+ 
   const fetchCartId = useCallback(async () => {
     if (user?.cartId) {
       const result = await fetch(`http://localhost:5242/api/Carts/${user.cartId}`);

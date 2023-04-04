@@ -18,6 +18,8 @@ const Payment = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [cartById, setCartById] = useState<CartModel>();
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
   const navigate = useNavigate();
 
   
@@ -237,7 +239,8 @@ const Payment = () => {
         </div>
       )}
       </section>
-      <FooterComponent />
+      <FooterComponent totalQuantity = {totalQuantity}/>
+     
     </main>
   );
 };

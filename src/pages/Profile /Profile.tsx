@@ -10,9 +10,9 @@ function Profile() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [restaurants, setRestaurants] = useState<
-    Record<number, RestaurantModel>
-  >({});
+  const [restaurants, setRestaurants] = useState<Record<number, RestaurantModel>>({});
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
 
   const navigate = useNavigate();
 
@@ -142,7 +142,7 @@ function Profile() {
           Logout
         </button>
       </section>
-      <FooterComponent  />
+      <FooterComponent totalQuantity = {totalQuantity}/>
     </main>
   );
 }
