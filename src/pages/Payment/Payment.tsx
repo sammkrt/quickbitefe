@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { CartModel, PaymentIntent, User } from "../../types/Types";
 import { useParams,useNavigate } from "react-router-dom";
@@ -105,6 +106,7 @@ const Payment = () => {
     if (paymentIntent) {
       completePayment();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paymentIntent]);
   const completePayment = async () => {
     if (!paymentIntent) {
