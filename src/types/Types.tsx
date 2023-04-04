@@ -59,10 +59,13 @@ export interface cartDish {
   restaurant: number;
 }
 export interface itemCardProps {
-  dish: Dish;
+  Dish: Dish;
+  onOnQuantityChange : (quantity : number) => void;
+  
 }
 export interface itemGalleryProps {
   dishes: Dish[];
+  onQuantityChange : (quantity : number) => void;
 }
 export interface CartDishProps {
   cartDishes: cartDish;
@@ -83,4 +86,8 @@ export interface Order {
   userId: number;
   totalPrice: number;
   restaurantName: string;
+}
+
+export interface FooterComponentProps {
+  totalQuantity : number
 }

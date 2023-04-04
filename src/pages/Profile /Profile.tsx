@@ -142,7 +142,7 @@ function Profile() {
           Logout
         </button>
       </section>
-      <FooterComponent />
+      <FooterComponent  />
     </main>
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { FooterComponentProps } from "../../types/Types";
 import "./FooterComponent.css";
-const FooterComponent: React.FC = () => {
+const FooterComponent: React.FC<FooterComponentProps> = ({totalQuantity}) => {
   return (
     <main className="footer-main">
       <div className="footer-container">

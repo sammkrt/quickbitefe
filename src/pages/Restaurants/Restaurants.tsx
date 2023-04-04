@@ -9,6 +9,11 @@ function Restaurant() {
   let { id } = useParams();
   const [dishes, setDishes] = useState<Dish[]>([]);
   const [restaurantById, setRestaurantById] = useState<RestaurantModel>();
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  
+  const handleQuantityChange = (quantity : number) => {
+    setTotalQuantity((prevTotal) => prevTotal + quantity);
+  };
   const fetchRestaurantById = async (id: any) => {
     const result = await fetch(`http://localhost:5242/api/Restaurants/${id}`);
     const data = await result.json();
@@ -33,8 +38,9 @@ function Restaurant() {
         <p className="restaurant-p">{restaurantById?.description}</p>
         <p className="restaurant-p">{restaurantById?.email}</p>
       </section>
-      <ItemGallery dishes={dishes} />
-      <FooterComponent />
+      <ItemGallery onQuantityChange={handleQuantityChange} dishes={dishes} />
+      <h2>Total Quantity: {totalQuantity}</h2>
+      <FooterComponent totalQuantity = {totalQuantity}/>
     </main>
   );
 }

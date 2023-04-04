@@ -1,8 +1,11 @@
 import { User, itemCardProps } from "../../types/Types";
 import { useEffect, useState } from "react";
 import "./ItemCard.css";
-const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
+const ItemCard: React.FC<itemCardProps> = ({ onOnQuantityChange, Dish }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [cart, setCart] = useState<{ id: number; quantity: number }[]>([]);
+  const [totalQuantity, setTotalQuantity] = useState<number>(0);
+
   const handleAddToCart = async (dishId: number, quantity: number) => {
     const response = await fetch(
       `http://localhost:5242/api/Carts?userId=${user?.id}`,
@@ -18,10 +21,14 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
       }
     );
     if (response.ok) {
+      setCart([...cart, { id: dishId, quantity }]);
+      onOnQuantityChange(quantity);
+      setTotalQuantity(totalQuantity + quantity);
     } else {
       console.error("Failed to register");
     }
   };
+
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     fetch("http://localhost:5242/Auth/user", {
@@ -79,6 +86,11 @@ const ItemCard: React.FC<itemCardProps> = ({ dish: Dish }) => {
             >
               Add
             </button>
+            <div className="cart-badge">
+              {cart.length > 0 && (
+                <span className="cart-badge-count">{totalQuantity}</span>
+              )}
+            </div>
           </div>
         </div>
       </figure>
