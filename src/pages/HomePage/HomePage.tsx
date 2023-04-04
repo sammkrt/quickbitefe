@@ -68,23 +68,27 @@ function HomePage() {
         />
         <button className="home-button">Search</button>
       </div>
-      <h1 className="home-h1">Categories</h1>
+      <h1 className="home-h1">What would you like to eat?</h1>
       <div className="container">
         <section onClick={filterPizza} className="home-section">
-          <p>Pizza</p>
           <img className="home-img" src="./assets/pizza-logo.png" alt="pizza" />
         </section>
         <section onClick={filterBurger} className="home-section">
-          <p>Burger</p>
-          <img className="home-img" src="./assets/burger-logo.png" alt="burger" />
+          <img
+            className="home-img"
+            src="./assets/burger-logo.png"
+            alt="burger"
+          />
         </section>
         <section onClick={filterCake} className="home-section">
-          <p>Cacke</p>
           <img className="home-img" src="./assets/cake-logo.png" alt="cake" />
         </section>
         <section onClick={filterSpaghetti} className="home-section">
-          <p>Spaghetti</p>
-          <img className="home-img" src="./assets/spaghetti-logo.png" alt="spaghetti" />
+          <img
+            className="home-img"
+            src="./assets/spaghetti-logo.png"
+            alt="spaghetti"
+          />
         </section>
       </div>
       <h1 className="home-h1">Restaurants</h1>
