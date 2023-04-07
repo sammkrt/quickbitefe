@@ -1,6 +1,6 @@
 # QuickBite - Food Delivery Application
 
-https://user-images.githubusercontent.com/98431169/229900487-51a81aa0-dd38-40ee-a02d-338063615307.mp4
+https://user-images.githubusercontent.com/98431169/230573889-a0a90fe3-dc78-435a-8bfd-779cd0ca4d68.mp4
 
 <br>
 QuickBite is a food delivery application that simplifies the process of ordering food online. Users can browse through various restaurants and cuisines, select their favorite dishes, and have them delivered right to their doorstep. This application is developed using .NET for the backend, React for the frontend, and uses Entity Framework to access the database. We used the Stripe API for the payment process and deployed the application on Azure.
